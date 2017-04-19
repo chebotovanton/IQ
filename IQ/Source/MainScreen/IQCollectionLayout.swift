@@ -10,6 +10,12 @@ import UIKit
 
 class IQCollectionLayout: UICollectionViewLayout {
 
+    private let kCellHeight: CGFloat = 66.0
+    private let kHorizontalOffset: CGFloat = 20.0
+    private let kBeetweenCellsSpace: CGFloat = 10.0
+    private let kMinCollapsedCellHeight: CGFloat = 56.0
+    private let kHeaderHeight: CGFloat = 66.0
+
     override func prepare() {
         super.prepare()
     }
@@ -34,6 +40,10 @@ class IQCollectionLayout: UICollectionViewLayout {
 
         if let collectionView = collectionView {
             for section in 0 ..< collectionView.numberOfSections {
+                let headerAttr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: section))
+                headerAttr.frame = CGRect(x: 0, y: 0, width: 300.0, height: kHeaderHeight)
+                result.append(headerAttr)
+
                 for item in 0 ..< collectionView.numberOfItems(inSection: section) {
                     if section == 0 {
                         let attr = firstSectionAttr(item, offset: yOffset)
@@ -51,23 +61,31 @@ class IQCollectionLayout: UICollectionViewLayout {
         return result
     }
 
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: indexPath)
+        attr.frame = CGRect(x: 0, y: 0, width: 300.0, height: kHeaderHeight)
+
+        return attr
+    }
+
     private func firstSectionAttr(_ item: Int, offset: CGFloat) -> UICollectionViewLayoutAttributes {
+        let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 0)
-        let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let y = item * (50 - min(Int(offset), 30))
-        attr.frame = CGRect(x: 0, y: y, width: 300, height: 40)
+        let y = kHeaderHeight + CGFloat(item) * (height - min(offset, kMinCollapsedCellHeight))
+        let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = item
-        attr.alpha = (50 - offset) / 50.0
+//        attr.alpha = (height - offset) / height
 
         return attr
     }
 
     private func secondSectionAttr(_ item: Int, offset: CGFloat) -> UICollectionViewLayoutAttributes {
+        let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 1)
-        let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let previousSectionsHeight = 100
-        let y = previousSectionsHeight + max(item * (50 - Int(offset)), 0)
-        attr.frame = CGRect(x: 0, y: y, width: 300, height: 40)
+        let previousSectionsHeight = kHeaderHeight * 2 +
+            CGFloat(collectionView!.numberOfItems(inSection: 0)) * height
+        let y = previousSectionsHeight + CGFloat(item) * (height - min(offset, kMinCollapsedCellHeight))
+        let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = 100 - item
 
         return attr
@@ -75,11 +93,20 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     private func lastSectionAttr(_ item: Int, offset: CGFloat) -> UICollectionViewLayoutAttributes {
         let indexPath = IndexPath(item: item, section: 2)
-        let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let previousSectionsHeight = 200
+        let previousSectionsHeight = 800
         let y = previousSectionsHeight + item * 50 - Int(offset)
-        attr.frame = CGRect(x: 0, y: y, width: 300, height: 40)
+        let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = 100 - item
+
+        return attr
+    }
+
+    private func createAttr(_ y: CGFloat, indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
+        let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        attr.frame = CGRect(x: kHorizontalOffset,
+                            y: y,
+                            width: (collectionView?.frame.width)! - 2 * kHorizontalOffset,
+                            height: kCellHeight)
 
         return attr
     }

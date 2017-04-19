@@ -14,12 +14,15 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private var sections: [Section] = []
     private let kCellIdentifier = "PurchaseCell"
+    private let kHeaderIdentifier = "HeaderView"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let nib = UINib(nibName: kCellIdentifier, bundle: nil)
         doneCollection.register(nib, forCellWithReuseIdentifier: kCellIdentifier)
+        let headerNib = UINib(nibName: kHeaderIdentifier, bundle: nil)
+        doneCollection.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderIdentifier)
 
         let doneLayout = IQCollectionLayout()
         doneCollection.collectionViewLayout = doneLayout
@@ -31,9 +34,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Private
 
     private func createSections() -> [Section] {
-        return [Section(createFakeDoneItems()),
-                Section(createFakeProgressItems()),
-                Section(createFakeQueueItems())]
+        return [Section(createFakeDoneItems(), name: "Latest Returned"),
+                Section(createFakeProgressItems(), name: "In Turn"),
+                Section(createFakeQueueItems(), name: "Purchased")]
     }
 
     private func createFakeDoneItems() -> [Purchase] {
@@ -43,7 +46,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func createFakeProgressItems() -> [Purchase] {
         return [Purchase(name: "First in progress", progress: 0.5),
-                Purchase(name: "Second in progress", progress: 0.1)]
+                Purchase(name: "Second in progress", progress: 0.1),
+                Purchase(name: "Third in progress", progress: 0.1)]
     }
 
     private func createFakeQueueItems() -> [Purchase] {
@@ -90,10 +94,25 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderIdentifier, for: indexPath)
+
+        if let header = view as? HeaderView {
+            let section = sections[indexPath.section]
+            header.nameLabel?.text = section.name
+        }
+
+        return view
+    }
+
     // MARK: - UICollectionViewDelegateFlowLayout methods
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return CGSize(width: 300.0, height: 50.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 300, height: 66)
     }
 }

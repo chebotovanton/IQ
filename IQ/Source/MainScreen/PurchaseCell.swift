@@ -10,9 +10,6 @@ import UIKit
 
 class PurchaseCell: UICollectionViewCell {
 
-    private let kCellHeight: CGFloat = 66.0
-    private let kHorizontalOffset: CGFloat = 20.0
-
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var progressView: UIView!
     private var shapeLayer = CAShapeLayer()
@@ -21,6 +18,8 @@ class PurchaseCell: UICollectionViewCell {
         super.awakeFromNib()
 
         layer.cornerRadius = 6
+        layer.borderColor = UIColor.gray.cgColor
+        layer.borderWidth = 1
         clipsToBounds = true
         backgroundColor = UIColor.white
 

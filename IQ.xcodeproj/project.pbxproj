@@ -20,6 +20,8 @@
 		9F3E7CF91EA2233D00456087 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E7CF71EA2233D00456087 /* PurchaseCell.swift */; };
 		9F3E7CFA1EA2233D00456087 /* PurchaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E7CF81EA2233D00456087 /* PurchaseCell.xib */; };
 		9FF65B751EA7E4140061021B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B741EA7E4140061021B /* Images.xcassets */; };
+		9FF65B771EA7F4340061021B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF65B761EA7F4340061021B /* HeaderView.swift */; };
+		9FF65B791EA7F4410061021B /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B781EA7F4410061021B /* HeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		9F3E7CF71EA2233D00456087 /* PurchaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		9F3E7CF81EA2233D00456087 /* PurchaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseCell.xib; sourceTree = "<group>"; };
 		9FF65B741EA7E4140061021B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9FF65B761EA7F4340061021B /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		9FF65B781EA7F4410061021B /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		A58C0CB52E33EAF7520782E0 /* Pods_IQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA50E6D93B15C03EC7A8D7C2 /* Pods-IQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-IQ/Pods-IQ.release.xcconfig"; sourceTree = "<group>"; };
 		EEC36B825DDBE621E46B775A /* Pods-IQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IQ/Pods-IQ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				9F3E7CF81EA2233D00456087 /* PurchaseCell.xib */,
 				9F38F39C1EA65DA400418E2D /* IQCollectionLayout.swift */,
 				9F38F39E1EA694A500418E2D /* Section.swift */,
+				9FF65B761EA7F4340061021B /* HeaderView.swift */,
+				9FF65B781EA7F4410061021B /* HeaderView.xib */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 				9FF65B751EA7E4140061021B /* Images.xcassets in Resources */,
 				9F3E7CE81EA219E600456087 /* LaunchScreen.storyboard in Resources */,
 				9F3E7CE51EA219E600456087 /* Assets.xcassets in Resources */,
+				9FF65B791EA7F4410061021B /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,7 @@
 				9F38F39F1EA694A500418E2D /* Section.swift in Sources */,
 				9F3E7CF31EA21B6600456087 /* MainVC.swift in Sources */,
 				9F3E7CF61EA2202D00456087 /* Purchase.swift in Sources */,
+				9FF65B771EA7F4340061021B /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

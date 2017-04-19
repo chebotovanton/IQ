@@ -9,9 +9,11 @@
 import UIKit
 
 class Section: NSObject {
+    var name: String
     var purchases: [Purchase] = []
 
-    init(_ purchases: [Purchase]) {
+    init(_ purchases: [Purchase], name: String) {
         self.purchases = purchases
+        self.name = name
     }
 }
