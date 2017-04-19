@@ -1,0 +1,12 @@
+PODS:
+  - HFCardCollectionViewLayout (0.4.2)
+
+DEPENDENCIES:
+  - HFCardCollectionViewLayout
+
+SPEC CHECKSUMS:
+  HFCardCollectionViewLayout: 88cc7deb86baae9396450d9db323081cce50da59
+
+PODFILE CHECKSUM: 1b868c6437817e9905741118958c4bbd836e351e
+
+COCOAPODS: 1.2.0
