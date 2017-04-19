@@ -27,7 +27,7 @@ class IQCollectionLayout: UICollectionViewLayout {
             width = collectionView.frame.size.width
             for section in 0 ..< collectionView.numberOfSections {
                 for _ in 0 ..< collectionView.numberOfItems(inSection: section) {
-                    height += 50
+                    height += kHeaderHeight
                 }
             }
         }
@@ -37,22 +37,30 @@ class IQCollectionLayout: UICollectionViewLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var result:[UICollectionViewLayoutAttributes] = []
         let yOffset = max(collectionView?.contentOffset.y ?? 0, 0)
+        var heightSum: CGFloat = 0
 
         if let collectionView = collectionView {
             for section in 0 ..< collectionView.numberOfSections {
                 let headerAttr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: section))
-                headerAttr.frame = CGRect(x: 0, y: 0, width: 300.0, height: kHeaderHeight)
+                headerAttr.frame = CGRect(x: 0,
+                                          y: heightSum,
+                                          width: collectionView.frame.width,
+                                          height: kHeaderHeight)
+                heightSum = headerAttr.frame.maxY
                 result.append(headerAttr)
 
                 for item in 0 ..< collectionView.numberOfItems(inSection: section) {
                     if section == 0 {
-                        let attr = firstSectionAttr(item, offset: yOffset)
+                        let attr = firstSectionAttr(item, offset: yOffset, heightSum: heightSum)
+                        heightSum = attr.frame.maxY
                         result.append(attr)
                     } else if section == 1 {
-                        let attr = secondSectionAttr(item, offset: yOffset)
+                        let attr = secondSectionAttr(item, offset: yOffset, heightSum: heightSum)
+                        heightSum = attr.frame.maxY
                         result.append(attr)
                     } else {
-                        let attr = lastSectionAttr(item, offset: yOffset)
+                        let attr = lastSectionAttr(item, offset: yOffset, heightSum: heightSum)
+                        heightSum = attr.frame.maxY
                         result.append(attr)
                     }
                 }
@@ -68,10 +76,10 @@ class IQCollectionLayout: UICollectionViewLayout {
         return attr
     }
 
-    private func firstSectionAttr(_ item: Int, offset: CGFloat) -> UICollectionViewLayoutAttributes {
+    private func firstSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 0)
-        let y = kHeaderHeight + CGFloat(item) * (height - min(offset, kMinCollapsedCellHeight))
+        let y = heightSum//kHeaderHeight + CGFloat(item) * (height - min(offset, kMinCollapsedCellHeight))
         let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = item
 //        attr.alpha = (height - offset) / height
@@ -79,22 +87,22 @@ class IQCollectionLayout: UICollectionViewLayout {
         return attr
     }
 
-    private func secondSectionAttr(_ item: Int, offset: CGFloat) -> UICollectionViewLayoutAttributes {
+    private func secondSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 1)
         let previousSectionsHeight = kHeaderHeight * 2 +
             CGFloat(collectionView!.numberOfItems(inSection: 0)) * height
-        let y = previousSectionsHeight + CGFloat(item) * (height - min(offset, kMinCollapsedCellHeight))
+        let y = heightSum//previousSectionsHeight + CGFloat(item) * (height - min(offset, kMinCollapsedCellHeight))
         let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = 100 - item
 
         return attr
     }
 
-    private func lastSectionAttr(_ item: Int, offset: CGFloat) -> UICollectionViewLayoutAttributes {
+    private func lastSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let indexPath = IndexPath(item: item, section: 2)
         let previousSectionsHeight = 800
-        let y = previousSectionsHeight + item * 50 - Int(offset)
+        let y = heightSum//previousSectionsHeight + item * 50 - Int(offset)
         let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = 100 - item
 
