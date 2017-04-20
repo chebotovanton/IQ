@@ -70,11 +70,10 @@ class IQCollectionLayout: UICollectionViewLayout {
                     } else if section == 1 {
                         let attr = secondSectionAttr(item, offset: yOffset, heightSum: heightSum, firstSectionHeight: firstSectionHeight)
                         heightSum = attr.frame.maxY + kBeetweenCellsSpace
-                        firstAndSecondSectionHeight = attr.frame.maxY + kBeetweenCellsSpace + kHeaderHeight
+                        firstAndSecondSectionHeight += kBeetweenCellsSpace + kHeaderHeight
                         result.append(attr)
                     } else if section == 2 {
                         let attr = lastSectionAttr(item, offset: yOffset, heightSum: heightSum)
-                        heightSum = attr.frame.maxY + kBeetweenCellsSpace
                         result.append(attr)
                     }
                 }
@@ -120,8 +119,10 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     private func lastSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
+        let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 2)
-        let y: CGFloat = heightSum
+        let totalSum: CGFloat = CGFloat(10 * height)
+        let y: CGFloat = totalSum + height * CGFloat(item)
         let attr = createAttr(y, indexPath: indexPath)
 //        attr.zIndex = -200
 
