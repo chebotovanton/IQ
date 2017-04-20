@@ -16,8 +16,14 @@ class IQCollectionLayout: UICollectionViewLayout {
     private let kMinCollapsedCellHeight: CGFloat = 56.0
     private let kHeaderHeight: CGFloat = 66.0
 
+    private var backgroundView = UIView()
+
     override func prepare() {
         super.prepare()
+
+        collectionView?.addSubview(backgroundView)
+        collectionView?.sendSubview(toBack: backgroundView)
+        backgroundView.backgroundColor = Colors.whiteBackgroundColor()
     }
 
     override var collectionViewContentSize: CGSize {
@@ -51,6 +57,7 @@ class IQCollectionLayout: UICollectionViewLayout {
                     headerY = max(offsetLim, heightSum + offsetLim)
                 } else if section == 1 {
                     headerY = max(heightSum, yOffset)
+                    backgroundView.frame = CGRect(x: 0, y: headerY + kHeaderHeight * 1.5, width: collectionView.frame.width, height: 2000)
                 } else {
                     headerY = max(heightSum, yOffset)
                 }
@@ -124,7 +131,7 @@ class IQCollectionLayout: UICollectionViewLayout {
         let totalSum: CGFloat = CGFloat(10 * height)
         let y: CGFloat = totalSum + height * CGFloat(item)
         let attr = createAttr(y, indexPath: indexPath)
-//        attr.zIndex = -200
+        attr.zIndex = -200
 
         return attr
     }

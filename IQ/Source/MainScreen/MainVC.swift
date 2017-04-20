@@ -100,19 +100,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         if let header = view as? HeaderView {
             let section = sections[indexPath.section]
             header.nameLabel?.text = section.name
+            let black = (indexPath.section == sections.count - 1)
+            header.setStyle(black: black)
         }
 
         return view
     }
-
-    // MARK: - UICollectionViewDelegateFlowLayout methods
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: 300.0, height: 50.0)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: 300, height: 66)
-//    }
 }
