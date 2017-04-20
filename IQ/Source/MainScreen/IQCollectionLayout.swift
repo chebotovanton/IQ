@@ -70,13 +70,6 @@ class IQCollectionLayout: UICollectionViewLayout {
         return result
     }
 
-    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: indexPath)
-        attr.frame = CGRect(x: 0, y: 0, width: 300.0, height: kHeaderHeight)
-
-        return attr
-    }
-
     private func firstSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 0)
