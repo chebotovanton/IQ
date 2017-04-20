@@ -35,13 +35,15 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func createSections() -> [Section] {
         return [Section(createFakeDoneItems(), name: "Latest Returned"),
-                Section(createFakeProgressItems(), name: "In Turn"),
-                Section(createFakeQueueItems(), name: "Purchased")]
+//                Section(createFakeProgressItems(), name: "In Turn"),
+//                Section(createFakeQueueItems(), name: "Purchased")]
+        ]
     }
 
     private func createFakeDoneItems() -> [Purchase] {
         return [Purchase(name: "First Done", progress: 1),
-                Purchase(name: "Second Done", progress: 1)]
+                Purchase(name: "Second Done", progress: 1),
+                Purchase(name: "Third Done", progress: 1)]
     }
 
     private func createFakeProgressItems() -> [Purchase] {
@@ -56,10 +58,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             result.append(Purchase(name: "In queue", progress: 0))
         }
         return result
-
-//        return [Purchase(name: "First in queue", progress: 0),
-//                Purchase(name: "Second in queue", progress: 0),
-//                Purchase(name: "Third in queue", progress: 0)]
     }
 
     //MARK: - Actions
