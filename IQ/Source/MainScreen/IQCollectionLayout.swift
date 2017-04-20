@@ -44,7 +44,7 @@ class IQCollectionLayout: UICollectionViewLayout {
             for section in 0 ..< collectionView.numberOfSections {
                 let headerAttr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: section))
                 headerAttr.frame = CGRect(x: 0,
-                                          y: max(yOffset, heightSum),
+                                          y: max(yOffset, heightSum + yOffset),
                                           width: collectionView.frame.width,
                                           height: kHeaderHeight)
                 heightSum += headerAttr.frame.height
@@ -53,7 +53,6 @@ class IQCollectionLayout: UICollectionViewLayout {
                 for item in 0 ..< collectionView.numberOfItems(inSection: section) {
                     if section == 0 {
                         let attr = firstSectionAttr(item, offset: yOffset, heightSum: heightSum)
-//                        heightSum += attr.frame.height + kBeetweenCellsSpace //max(heightSum, attr.frame.maxY)
                         heightSum = attr.frame.maxY + kBeetweenCellsSpace - yOffset
                         result.append(attr)
                     } else if section == 1 {

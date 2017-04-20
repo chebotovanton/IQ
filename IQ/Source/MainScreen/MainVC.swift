@@ -35,8 +35,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func createSections() -> [Section] {
         return [Section(createFakeDoneItems(), name: "Latest Returned"),
-//                Section(createFakeProgressItems(), name: "In Turn"),
-//                Section(createFakeQueueItems(), name: "Purchased")]
+                Section(createFakeProgressItems(), name: "In Turn"),
+//                Section(createFakeQueueItems(), name: "Purchased")
         ]
     }
 
