@@ -12,6 +12,8 @@ class Purchase: NSObject {
 
     var progress: CGFloat
     var name: String
+    var price: Int = 450
+    var icon: UIImage?
 
     init(name: String, progress: CGFloat) {
         self.name = name

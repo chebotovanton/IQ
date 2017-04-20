@@ -10,9 +10,9 @@ import UIKit
 
 class IQCollectionLayout: UICollectionViewLayout {
 
-    private let kCellHeight: CGFloat = 66.0
+    private let kCellHeight: CGFloat = 76.0
     private let kHorizontalOffset: CGFloat = 20.0
-    private let kBeetweenCellsSpace: CGFloat = 10.0
+    private let kBeetweenCellsSpace: CGFloat = 0.0
     private let kMinCollapsedCellHeight: CGFloat = 56.0
     private let kHeaderHeight: CGFloat = 66.0
 

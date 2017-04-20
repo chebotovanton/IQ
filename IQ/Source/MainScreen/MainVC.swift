@@ -41,17 +41,21 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     private func createFakeDoneItems() -> [Purchase] {
-        return [Purchase(name: "First Done", progress: 1),
+        let items = [Purchase(name: "First Done", progress: 1),
                 Purchase(name: "Second Done", progress: 1),
-                Purchase(name: "Third Done", progress: 1)
-        ]
+                Purchase(name: "Third Done", progress: 1)]
+        setFakeIcons(items)
+        
+        return items
     }
 
     private func createFakeProgressItems() -> [Purchase] {
-        return [Purchase(name: "First in progress", progress: 0.5),
+        let items = [Purchase(name: "First in progress", progress: 0.5),
                 Purchase(name: "Second in progress", progress: 0.1),
-                Purchase(name: "Third in progress", progress: 0.1)
-        ]
+                Purchase(name: "Third in progress", progress: 0.1)]
+        setFakeIcons(items)
+
+        return items
     }
 
     private func createFakeQueueItems() -> [Purchase] {
@@ -59,7 +63,17 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         for i in 0...6 {
             result.append(Purchase(name: "In queue " + String(i), progress: 0))
         }
+        setFakeIcons(result)
+
         return result
+    }
+
+    private func setFakeIcons(_ items: [Purchase]) {
+        for i in 0..<items.count {
+            let purchase = items[i]
+            let iconName = "logo" + String(i)
+            purchase.icon = UIImage(named: iconName)
+        }
     }
 
     //MARK: - Actions
