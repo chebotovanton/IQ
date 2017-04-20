@@ -129,7 +129,7 @@ class IQCollectionLayout: UICollectionViewLayout {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 2)
         let totalSum: CGFloat = CGFloat(10 * height)
-        let y: CGFloat = totalSum + height * CGFloat(item)
+        let y: CGFloat = max(totalSum + height * CGFloat(item), heightSum - kHeaderHeight)
         let attr = createAttr(y, indexPath: indexPath)
         attr.zIndex = -200
 
