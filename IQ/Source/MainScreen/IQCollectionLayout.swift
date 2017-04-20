@@ -57,7 +57,7 @@ class IQCollectionLayout: UICollectionViewLayout {
                         result.append(attr)
                     } else if section == 1 {
                         let attr = secondSectionAttr(item, offset: yOffset, heightSum: heightSum)
-                        heightSum = max(heightSum, attr.frame.maxY)
+                        heightSum = attr.frame.maxY + kBeetweenCellsSpace - yOffset
                         result.append(attr)
                     } else {
                         let attr = lastSectionAttr(item, offset: yOffset, heightSum: heightSum)
@@ -80,7 +80,7 @@ class IQCollectionLayout: UICollectionViewLayout {
     private func firstSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 0)
-        var collapseProgress = (offset - 76 * CGFloat(item - 1)) / height
+        var collapseProgress = (offset - height * CGFloat(item - 1)) / height
         collapseProgress = min(1, collapseProgress)
         collapseProgress = max(collapseProgress, 0)
         let y: CGFloat
@@ -97,17 +97,17 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     private func secondSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
+        let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 1)
-        var collapseProgress = (offset - heightSum) / heightSum
+        var collapseProgress = (offset - heightSum) / height
         collapseProgress = min(1, collapseProgress)
         collapseProgress = max(collapseProgress, 0)
         let y: CGFloat
         if item == 0 {
-            y = max(heightSum, offset)
+            y = max(heightSum, offset + heightSum)
         } else {
-            y = max(heightSum, offset) + kBeetweenCellsSpace - kMinCollapsedCellHeight * collapseProgress
+            y = max(heightSum, offset + heightSum) - kMinCollapsedCellHeight * collapseProgress
         }
-
         let attr = createAttr(CGFloat(y), indexPath: indexPath)
         attr.zIndex = 100 - item
 
