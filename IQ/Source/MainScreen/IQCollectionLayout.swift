@@ -31,7 +31,7 @@ class IQCollectionLayout: UICollectionViewLayout {
                 }
             }
         }
-        height = 1000.0
+        height = 2000.0
         return CGSize(width: width, height: height)
     }
 
@@ -40,6 +40,7 @@ class IQCollectionLayout: UICollectionViewLayout {
         let yOffset = max(collectionView?.contentOffset.y ?? 0, 0)
         var heightSum: CGFloat = 0
         var firstSectionHeight: CGFloat = 0
+        var firstAndSecondSectionHeight: CGFloat = 0
 
         if let collectionView = collectionView {
             for section in 0 ..< collectionView.numberOfSections {
@@ -48,6 +49,8 @@ class IQCollectionLayout: UICollectionViewLayout {
                 if section == 0 {
                     let offsetLim = min(yOffset, 200 + firstSectionHeight)
                     headerY = max(offsetLim, heightSum + offsetLim)
+                } else if section == 1 {
+                    headerY = max(heightSum, yOffset)
                 } else {
                     headerY = max(heightSum, yOffset)
                 }
@@ -67,10 +70,12 @@ class IQCollectionLayout: UICollectionViewLayout {
                     } else if section == 1 {
                         let attr = secondSectionAttr(item, offset: yOffset, heightSum: heightSum, firstSectionHeight: firstSectionHeight)
                         heightSum = attr.frame.maxY + kBeetweenCellsSpace
+                        firstAndSecondSectionHeight = attr.frame.maxY + kBeetweenCellsSpace
                         result.append(attr)
                     } else {
+                        heightSum = firstAndSecondSectionHeight + kHeaderHeight
                         let attr = lastSectionAttr(item, offset: yOffset, heightSum: heightSum)
-                        heightSum = max(heightSum, attr.frame.maxY)
+                        heightSum = attr.frame.maxY + kBeetweenCellsSpace
                         result.append(attr)
                     }
                 }
@@ -93,7 +98,6 @@ class IQCollectionLayout: UICollectionViewLayout {
         }
         let attr = createAttr(y, indexPath: indexPath)
         attr.zIndex = item
-//        attr.alpha = 1 - collapseProgress
 
         return attr
     }
@@ -118,8 +122,9 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     private func lastSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let indexPath = IndexPath(item: item, section: 2)
-        let y = heightSum + kBeetweenCellsSpace
-        let attr = createAttr(CGFloat(y), indexPath: indexPath)
+        let y: CGFloat = heightSum// + CGFloat(item) * (kCellHeight + kBeetweenCellsSpace)
+        let attr = createAttr(y, indexPath: indexPath)
+        attr.zIndex = -200
 
         return attr
     }
