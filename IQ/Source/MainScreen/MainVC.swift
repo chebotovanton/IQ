@@ -41,21 +41,23 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     private func createFakeDoneItems() -> [Purchase] {
-        let items = [Purchase(name: "First Done", progress: 1),
-                Purchase(name: "Second Done", progress: 1),
-                Purchase(name: "Third Done", progress: 1)]
-        setFakeIcons(items)
-        
-        return items
+        var result: [Purchase] = []
+        for i in 0...4 {
+            result.append(Purchase(name: "Done " + String(i), progress: 1))
+        }
+        setFakeIcons(result)
+
+        return result
     }
 
     private func createFakeProgressItems() -> [Purchase] {
-        let items = [Purchase(name: "First in progress", progress: 0.5),
-                Purchase(name: "Second in progress", progress: 0.1),
-                Purchase(name: "Third in progress", progress: 0.1)]
-        setFakeIcons(items)
+        var result: [Purchase] = []
+        for i in 0...4 {
+            result.append(Purchase(name: "In progress " + String(i), progress: 0.5))
+        }
+        setFakeIcons(result)
 
-        return items
+        return result
     }
 
     private func createFakeQueueItems() -> [Purchase] {
