@@ -115,7 +115,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func coinPath(_ coin: UIView, destY: CGFloat) -> CGPath {
         let originPoint = coin.center
-        let destinationPoint = CGPoint(x: coin.center.x, y: destY)
+        let destinationPoint = CGPoint(x: 50, y: destY)
         let path = sinPath(p1: originPoint, p2: destinationPoint)
 
         return path
@@ -127,8 +127,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let dy = p2.y - p1.y
         let d = sqrt(dx * dx + dy * dy)
         let a = atan2(dy, dx)
-        let cosa = cos(a) // Calculate only once...
-        let sina = sin(a) // Ditto
+        let cosa = cos(a)
+        let sina = sin(a)
 
         // Initialise our path
         let path = CGMutablePath()
@@ -217,7 +217,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 }, completion: nil)
             } else {
                 let indexToUpdate = IndexPath(item: 0, section: 1)
-                self.doneCollection.reloadItems(at: [indexToUpdate])
+                if let purchaseCell = doneCollection.cellForItem(at: indexToUpdate) as? PurchaseCell {
+                    purchaseCell.setup(purchase)
+//                    self.doneCollection.reloadItems(at: [indexToUpdate])
+                }
             }
         }
     }
