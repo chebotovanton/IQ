@@ -96,7 +96,12 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let x = CGFloat(arc4random_uniform(300))
             coin.frame = CGRect(x: x, y: 600, width: 20, height: 20)
             coin.layer.cornerRadius = 10.0
-            coin.backgroundColor = Colors.progressColor()
+            let colorKey = arc4random_uniform(10)
+            if colorKey < 3 {
+                coin.backgroundColor = Colors.progressColor()
+            } else {
+                coin.backgroundColor = Colors.appBlueColor()
+            }
             view.addSubview(coin)
             coins.append(coin)
         }
