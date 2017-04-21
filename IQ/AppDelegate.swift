@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navVC
         navVC.setNavigationBarHidden(true, animated: false)
 
+        let loginVC = LoginVC(nibName: "LoginVC", bundle: nil)
+        let guideNavVC = UINavigationController(rootViewController: loginVC)
+        guideNavVC.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController?.present(guideNavVC, animated: false, completion: nil)
+
         return true
     }
 

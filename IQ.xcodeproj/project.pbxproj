@@ -11,6 +11,12 @@
 		9F1F4B971EAA6EE500506282 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F4B951EAA6EE500506282 /* BrowserVC.swift */; };
 		9F1F4B981EAA6EE500506282 /* BrowserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F4B961EAA6EE500506282 /* BrowserVC.xib */; };
 		9F1F4B9A1EAA7F7C00506282 /* PurchaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F4B991EAA7F7C00506282 /* PurchaseAction.swift */; };
+		9F1F4B9E1EAAA1A500506282 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F4B9C1EAAA1A500506282 /* LoginVC.swift */; };
+		9F1F4B9F1EAAA1A500506282 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F4B9D1EAAA1A500506282 /* LoginVC.xib */; };
+		9F1F4BA21EAAA1B700506282 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F4BA01EAAA1B700506282 /* AnalysisVC.swift */; };
+		9F1F4BA31EAAA1B700506282 /* AnalysisVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F4BA11EAAA1B700506282 /* AnalysisVC.xib */; };
+		9F1F4BA61EAAA1C700506282 /* StatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F4BA41EAAA1C700506282 /* StatsVC.swift */; };
+		9F1F4BA71EAAA1C700506282 /* StatsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F4BA51EAAA1C700506282 /* StatsVC.xib */; };
 		9F38F39B1EA65CFC00418E2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9F38F39A1EA65CFC00418E2D /* Podfile */; };
 		9F38F39D1EA65DA400418E2D /* IQCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38F39C1EA65DA400418E2D /* IQCollectionLayout.swift */; };
 		9F38F39F1EA694A500418E2D /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38F39E1EA694A500418E2D /* Section.swift */; };
@@ -36,6 +42,12 @@
 		9F1F4B951EAA6EE500506282 /* BrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
 		9F1F4B961EAA6EE500506282 /* BrowserVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserVC.xib; sourceTree = "<group>"; };
 		9F1F4B991EAA7F7C00506282 /* PurchaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseAction.swift; sourceTree = "<group>"; };
+		9F1F4B9C1EAAA1A500506282 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		9F1F4B9D1EAAA1A500506282 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		9F1F4BA01EAAA1B700506282 /* AnalysisVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
+		9F1F4BA11EAAA1B700506282 /* AnalysisVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalysisVC.xib; sourceTree = "<group>"; };
+		9F1F4BA41EAAA1C700506282 /* StatsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsVC.swift; sourceTree = "<group>"; };
+		9F1F4BA51EAAA1C700506282 /* StatsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsVC.xib; sourceTree = "<group>"; };
 		9F38F39A1EA65CFC00418E2D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		9F38F39C1EA65DA400418E2D /* IQCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQCollectionLayout.swift; sourceTree = "<group>"; };
 		9F38F39E1EA694A500418E2D /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
@@ -100,6 +112,19 @@
 			path = Browser;
 			sourceTree = "<group>";
 		};
+		9F1F4B9B1EAAA19300506282 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				9F1F4B9C1EAAA1A500506282 /* LoginVC.swift */,
+				9F1F4B9D1EAAA1A500506282 /* LoginVC.xib */,
+				9F1F4BA01EAAA1B700506282 /* AnalysisVC.swift */,
+				9F1F4BA11EAAA1B700506282 /* AnalysisVC.xib */,
+				9F1F4BA41EAAA1C700506282 /* StatsVC.swift */,
+				9F1F4BA51EAAA1C700506282 /* StatsVC.xib */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		9F3E7CD11EA219E600456087 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +160,7 @@
 		9F3E7CEF1EA21B4A00456087 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				9F1F4B9B1EAAA19300506282 /* Guide */,
 				9F1F4B941EAA6EBF00506282 /* Browser */,
 				9FF65B811EA9E05D0061021B /* ProgressView */,
 				9FF65B7C1EA9DA530061021B /* PurchaseDetails */,
@@ -242,8 +268,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F1F4B9F1EAAA1A500506282 /* LoginVC.xib in Resources */,
+				9F1F4BA31EAAA1B700506282 /* AnalysisVC.xib in Resources */,
 				9FF65B801EA9DA810061021B /* PurchaseDetailsVC.xib in Resources */,
 				9F38F39B1EA65CFC00418E2D /* Podfile in Resources */,
+				9F1F4BA71EAAA1C700506282 /* StatsVC.xib in Resources */,
 				9F3E7CFA1EA2233D00456087 /* PurchaseCell.xib in Resources */,
 				9F3E7CF41EA21B6600456087 /* MainVC.xib in Resources */,
 				9FF65B751EA7E4140061021B /* Images.xcassets in Resources */,
@@ -309,13 +338,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F1F4BA61EAAA1C700506282 /* StatsVC.swift in Sources */,
 				9F38F39D1EA65DA400418E2D /* IQCollectionLayout.swift in Sources */,
 				9FF65B7B1EA970470061021B /* Colors.swift in Sources */,
+				9F1F4B9E1EAAA1A500506282 /* LoginVC.swift in Sources */,
 				9F3E7CF91EA2233D00456087 /* PurchaseCell.swift in Sources */,
 				9F1F4B971EAA6EE500506282 /* BrowserVC.swift in Sources */,
 				9F3E7CDE1EA219E600456087 /* AppDelegate.swift in Sources */,
 				9FF65B7F1EA9DA810061021B /* PurchaseDetailsVC.swift in Sources */,
 				9F38F39F1EA694A500418E2D /* Section.swift in Sources */,
+				9F1F4BA21EAAA1B700506282 /* AnalysisVC.swift in Sources */,
 				9F1F4B9A1EAA7F7C00506282 /* PurchaseAction.swift in Sources */,
 				9F3E7CF31EA21B6600456087 /* MainVC.swift in Sources */,
 				9FF65B831EA9E1390061021B /* ProgressView.swift in Sources */,

@@ -94,16 +94,17 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         for _ in 0...5 {
             let coin = UIView()
             let x = CGFloat(arc4random_uniform(300))
-            coin.frame = CGRect(x: x, y: 800, width: 20, height: 20)
+            coin.frame = CGRect(x: x, y: 600, width: 20, height: 20)
             coin.layer.cornerRadius = 10.0
             coin.backgroundColor = Colors.progressColor()
             view.addSubview(coin)
             coins.append(coin)
         }
 
-        for coin in coins {
+        for i in 0..<coins.count {
             let animation = CAKeyframeAnimation(keyPath: "position")
-            if coin == coins.first {
+            let coin = coins[i]
+            if i == 0 {
                 // WARNING: Kekeke. Do a real delegate, moron!
                 animation.delegate = self
             }
@@ -111,6 +112,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             animation.fillMode = kCAFillModeForwards
             animation.path = coinPath(coin, destY: coinDestY)
             animation.duration = 2.0
+            animation.beginTime = CACurrentMediaTime() + CFTimeInterval(0.2 * CGFloat(i))
             animation.isRemovedOnCompletion = true
             animation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
 
