@@ -209,7 +209,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         detailsVC.providesPresentationContextTransitionStyle = true;
 
         detailsVC.transitioningDelegate = self
-//        navigationController?.pushViewController(detailsVC, animated: true)
         present(detailsVC, animated: true, completion: nil)
     }
 
