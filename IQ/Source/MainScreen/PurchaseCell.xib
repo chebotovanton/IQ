@@ -21,7 +21,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="L6l-IH-3qN">
                         <rect key="frame" x="0.0" y="0.0" width="272" height="76"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulg-q9-G3I">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulg-q9-G3I" customClass="ProgressView" customModule="IQ" customModuleProvider="target">
                         <rect key="frame" x="5" y="4" width="262" height="64"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>

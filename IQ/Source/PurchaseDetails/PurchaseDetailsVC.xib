@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurchaseDetailsVC" customModule="IQ" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8k-v4-Lgu">
+                    <rect key="frame" x="0.0" y="160" width="375" height="507"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="LaY-D1-LKg">
+                    <rect key="frame" x="14" y="120" width="347" height="78"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyM-gb-4Ma">
+                    <rect key="frame" x="303.5" y="146" width="57.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIF-03-eCb">
+                    <rect key="frame" x="80" y="120" width="44.5" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 3, 12:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcL-Jt-CDe">
+                    <rect key="frame" x="80" y="182" width="83" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xHZ-tc-XQ8">
+                    <rect key="frame" x="29" y="141" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="kYA-Mc-M8V"/>
+                        <constraint firstAttribute="width" constant="36" id="lMb-Hn-jBh"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etO-BH-qCp">
+                    <rect key="frame" x="15" y="15" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="dismiss" destination="-1" eventType="touchUpInside" id="4Cw-Zd-lg9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="etO-BH-qCp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="3bo-NK-Ey5"/>
+                <constraint firstItem="xHZ-tc-XQ8" firstAttribute="leading" secondItem="LaY-D1-LKg" secondAttribute="leading" constant="15" id="3fv-Xa-nUP"/>
+                <constraint firstItem="etO-BH-qCp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="CGZ-Bn-ldY"/>
+                <constraint firstItem="wIF-03-eCb" firstAttribute="top" secondItem="LaY-D1-LKg" secondAttribute="top" id="H4n-Ed-YxT"/>
+                <constraint firstItem="G8k-v4-Lgu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="160" id="H7D-7n-mHs"/>
+                <constraint firstAttribute="trailing" secondItem="G8k-v4-Lgu" secondAttribute="trailing" id="QMJ-vY-Sbq"/>
+                <constraint firstItem="LaY-D1-LKg" firstAttribute="centerX" secondItem="G8k-v4-Lgu" secondAttribute="centerX" id="Qoy-bS-FiG"/>
+                <constraint firstItem="lcL-Jt-CDe" firstAttribute="leading" secondItem="xHZ-tc-XQ8" secondAttribute="trailing" constant="15" id="Ts3-cz-swU"/>
+                <constraint firstItem="SyM-gb-4Ma" firstAttribute="trailing" secondItem="LaY-D1-LKg" secondAttribute="trailing" id="Z7B-MN-58x"/>
+                <constraint firstItem="G8k-v4-Lgu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cRz-y1-fUL"/>
+                <constraint firstAttribute="bottom" secondItem="G8k-v4-Lgu" secondAttribute="bottom" id="cV3-Lg-Ogv"/>
+                <constraint firstItem="wIF-03-eCb" firstAttribute="leading" secondItem="xHZ-tc-XQ8" secondAttribute="trailing" constant="15" id="dc7-P1-08B"/>
+                <constraint firstItem="G8k-v4-Lgu" firstAttribute="top" secondItem="LaY-D1-LKg" secondAttribute="top" constant="40" id="ftW-St-BIu"/>
+                <constraint firstItem="lcL-Jt-CDe" firstAttribute="bottom" secondItem="LaY-D1-LKg" secondAttribute="bottom" id="nB0-kl-cKR"/>
+                <constraint firstItem="xHZ-tc-XQ8" firstAttribute="centerY" secondItem="LaY-D1-LKg" secondAttribute="centerY" id="oPr-Ih-1IA"/>
+                <constraint firstItem="SyM-gb-4Ma" firstAttribute="centerY" secondItem="LaY-D1-LKg" secondAttribute="centerY" id="ySk-P0-AD0"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="cellBackground" width="347" height="78"/>
+    </resources>
+</document>

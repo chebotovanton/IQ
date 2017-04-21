@@ -120,4 +120,17 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
         return view
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        let purchase = section.purchases[indexPath.item]
+
+        let detailsVC = PurchaseDetailsVC(nibName: "PurchaseDetailsVC", bundle: nil)
+
+        detailsVC.definesPresentationContext = true
+        detailsVC.modalPresentationStyle = .overCurrentContext
+        detailsVC.providesPresentationContextTransitionStyle = true;
+
+        present(detailsVC, animated: true, completion: nil)
+    }
 }
