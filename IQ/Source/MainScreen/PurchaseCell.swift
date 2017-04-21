@@ -16,10 +16,10 @@ class PurchaseCell: UICollectionViewCell {
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var progressView: ProgressView!
 
-    func setup(_ purchase: Purchase) {
+    func setup(_ purchase: Purchase, animated: Bool = false) {
         nameLabel.text = purchase.name
         priceLabel.text = StringUtils.priceText(purchase.price, progress: purchase.progress)
         iconView.image = purchase.icon
-        progressView.setup(purchase.progress)
+        progressView.setup(purchase.progress, animated: animated)
     }
 }

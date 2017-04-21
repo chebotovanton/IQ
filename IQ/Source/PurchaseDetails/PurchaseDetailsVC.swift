@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PurchaseDetailsVC: UIViewController {
+class PurchaseDetailsVC: UIViewController { //, UITableViewDelegate, UITableViewDataSource {
 
     var purchase: Purchase?
 
@@ -17,6 +17,9 @@ class PurchaseDetailsVC: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var progressView: ProgressView!
+    @IBOutlet private weak var actionsTable: UITableView!
+
+    private var items: [PurchaseAction] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,6 @@ class PurchaseDetailsVC: UIViewController {
         if let purchase = purchase {
             setup(purchase)
         }
-
         let rec = UITapGestureRecognizer(target: self, action: #selector(PurchaseDetailsVC.hide))
         view.addGestureRecognizer(rec)
     }
@@ -38,5 +40,11 @@ class PurchaseDetailsVC: UIViewController {
 
     @objc @IBAction func hide() {
         dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: - UITableViewDelegate, UITableViewDataSource
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }

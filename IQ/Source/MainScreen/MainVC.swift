@@ -55,7 +55,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     private func createFakeProgressItems() -> [Purchase] {
         var result: [Purchase] = []
         for i in 0...4 {
-            result.append(Purchase(name: "In progress " + String(i), progress: 0.5))
+            result.append(Purchase(name: "In progress " + String(i), progress: 0.1))
         }
         setFakeIcons(result)
 
@@ -135,6 +135,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let cosa = cos(a)
         let sina = sin(a)
 
+        let amplitude: CGFloat = CGFloat(arc4random_uniform(100)) / 50.0
+
         // Initialise our path
         let path = CGMutablePath()
         path.move(to: p1)
@@ -144,7 +146,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         for t in 0 ... nPoints {
             // Calculate the un-transformed x,y
             let tx = CGFloat(t) / CGFloat(nPoints) // 0 ... 1
-            let ty = 0.1 * sin(tx * 2 * CGFloat.pi ) // 0 ... 2π, arbitrary amplitude
+            let ty = 0.1 * sin(amplitude * pow(tx, 1.0) * CGFloat.pi ) // 0 ... 2π, arbitrary amplitude
             // Apply the transform
             let x = p1.x + d * (tx * cosa - ty * sina)
             let y = p1.y + d * (tx * sina + ty * cosa)
@@ -210,7 +212,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         coins = []
         if let purchase = self.sections[1].purchases.first {
-            purchase.progress = min(1, purchase.progress + 0.1)
+            purchase.progress = min(1, purchase.progress + 0.25)
             if purchase.progress == 1 {
                 self.sections[1].purchases.remove(at: 0)
                 self.sections[0].purchases.append(purchase)
@@ -223,7 +225,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             } else {
                 let indexToUpdate = IndexPath(item: 0, section: 1)
                 if let purchaseCell = doneCollection.cellForItem(at: indexToUpdate) as? PurchaseCell {
-                    purchaseCell.setup(purchase)
+                    purchaseCell.setup(purchase, animated: true)
                 }
             }
         }
