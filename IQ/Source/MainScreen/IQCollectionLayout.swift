@@ -36,6 +36,11 @@ class IQCollectionLayout: UICollectionViewLayout {
         return CGSize(width: width, height: contentSize)
     }
 
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        // WARNING: This should fix misterious scroll crash "layout attributes for supplementary item changed without invalidating the layout'"
+        return true//collectionView?.contentOffset.y ?? 0 > 0
+    }
+
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var result:[UICollectionViewLayoutAttributes] = []
         let yOffset = max(collectionView?.contentOffset.y ?? 0, 0)
@@ -48,7 +53,7 @@ class IQCollectionLayout: UICollectionViewLayout {
                 let headerAttr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: section))
                 let headerY: CGFloat
                 if section == 0 {
-                    let offsetLim = min(yOffset, 200 + firstSectionHeight)
+                    let offsetLim = min(yOffset, firstSectionScrollLim() + firstSectionHeight)
                     headerY = max(offsetLim, heightSum + offsetLim)
                 } else if section == 1 {
                     headerY = max(heightSum, yOffset)
@@ -123,6 +128,7 @@ class IQCollectionLayout: UICollectionViewLayout {
     private func lastSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 2)
+        // WARNING: Weird const in code
         let totalSum: CGFloat = CGFloat(10 * height)
         let y: CGFloat = max(totalSum + height * CGFloat(item), heightSum - kHeaderHeight)
         let attr = createAttr(y, indexPath: indexPath)
@@ -142,9 +148,8 @@ class IQCollectionLayout: UICollectionViewLayout {
         return attr
     }
 
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        // WARNING: This should fix misterious scroll crash "layout attributes for supplementary item changed without invalidating the layout'"
-        return true//collectionView?.contentOffset.y ?? 0 > 0
+    private func firstSectionScrollLim() -> CGFloat {
+        return CGFloat(collectionView?.numberOfItems(inSection: 0) ?? 0) * kCellHeight
     }
 
 }
