@@ -219,7 +219,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 let indexToUpdate = IndexPath(item: 0, section: 1)
                 if let purchaseCell = doneCollection.cellForItem(at: indexToUpdate) as? PurchaseCell {
                     purchaseCell.setup(purchase)
-//                    self.doneCollection.reloadItems(at: [indexToUpdate])
                 }
             }
         }
