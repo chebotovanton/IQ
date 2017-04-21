@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
 
@@ -95,50 +95,59 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             view.addSubview(coin)
             coins.append(coin)
         }
-//        UIView.animate(withDuration: 1.5, animations: {
-            for coin in self.coins {
-                let animation = CAKeyframeAnimation(keyPath: "position")
-                animation.calculationMode = kCAAnimationPaced
-                animation.fillMode = kCAFillModeForwards
-                animation.path = coinPath(coin, destY: coinDestY)
-                animation.duration = 2.0
-                animation.isRemovedOnCompletion = false
-                animation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
 
-                coin.layer.add(animation, forKey: "anim")
+        for coin in coins {
+            let animation = CAKeyframeAnimation(keyPath: "position")
+            if coin == coins.first {
+                // WARNING: Kekeke. Do a real delegate, moron!
+                animation.delegate = self
             }
-//        }) { (finished) in
-//            for coin in self.coins {
-//                coin.removeFromSuperview()
-//            }
-//            if let purchase = self.sections[1].purchases.first {
-//                purchase.progress = min(1, purchase.progress + 0.1)
-//                if purchase.progress == 1 {
-//                    self.sections[1].purchases.remove(at: 0)
-//                    self.sections[0].purchases.append(purchase)
-//                    let indexToInsert = IndexPath(item: self.sections[0].purchases.count - 1, section: 0)
-//                    let indexToRemove = IndexPath(item: 0, section: 1)
-//                    self.doneCollection.performBatchUpdates({
-//                        self.doneCollection.insertItems(at: [indexToInsert])
-//                        self.doneCollection.deleteItems(at: [indexToRemove])
-//                    }, completion: nil)
-//                } else {
-//                    let indexToUpdate = IndexPath(item: 0, section: 1)
-//                    self.doneCollection.reloadItems(at: [indexToUpdate])
-//                }
-//            }
+            animation.calculationMode = kCAAnimationPaced
+            animation.fillMode = kCAFillModeForwards
+            animation.path = coinPath(coin, destY: coinDestY)
+            animation.duration = 2.0
+            animation.isRemovedOnCompletion = true
+            animation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
+
+            coin.layer.add(animation, forKey: "anim")
+        }
     }
 
     private func coinPath(_ coin: UIView, destY: CGFloat) -> CGPath {
-        let path = UIBezierPath()
         let originPoint = coin.center
-        let xDelta = CGFloat(arc4random_uniform(300)) - 150.0
-        let controlPoint = CGPoint(x: coin.frame.origin.x + xDelta, y: (destY + coin.frame.origin.y) / 2.0)
         let destinationPoint = CGPoint(x: coin.center.x, y: destY)
-        path.move(to: originPoint)
-        path.addQuadCurve(to: destinationPoint, controlPoint: controlPoint)
+        let path = sinPath(p1: originPoint, p2: destinationPoint)
 
-        return path.cgPath
+        return path
+    }
+
+    private func sinPath(p1: CGPoint, p2: CGPoint) -> CGPath {
+        // Calculate the transform
+        let dx = p2.x - p1.x
+        let dy = p2.y - p1.y
+        let d = sqrt(dx * dx + dy * dy)
+        let a = atan2(dy, dx)
+        let cosa = cos(a) // Calculate only once...
+        let sina = sin(a) // Ditto
+
+        // Initialise our path
+        let path = CGMutablePath()
+        path.move(to: p1)
+
+        // Plot a parametric function with 100 points
+        let nPoints = 100
+        for t in 0 ... nPoints {
+            // Calculate the un-transformed x,y
+            let tx = CGFloat(t) / CGFloat(nPoints) // 0 ... 1
+            let ty = 0.1 * sin(tx * 2 * CGFloat.pi ) // 0 ... 2π, arbitrary amplitude
+            // Apply the transform
+            let x = p1.x + d * (tx * cosa - ty * sina)
+            let y = p1.y + d * (tx * sina + ty * cosa)
+            // Add the transformed point to the path
+            path.addLine(to: CGPoint(x: x, y: y))
+        }
+
+        return path
     }
 
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
@@ -185,5 +194,31 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         detailsVC.providesPresentationContextTransitionStyle = true;
 
         present(detailsVC, animated: true, completion: nil)
+    }
+
+    // MARK: - CAAnimationDelegate
+
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        for coin in self.coins {
+            coin.layer.removeAllAnimations()
+            coin.removeFromSuperview()
+        }
+        coins = []
+        if let purchase = self.sections[1].purchases.first {
+            purchase.progress = min(1, purchase.progress + 0.1)
+            if purchase.progress == 1 {
+                self.sections[1].purchases.remove(at: 0)
+                self.sections[0].purchases.append(purchase)
+                let indexToInsert = IndexPath(item: self.sections[0].purchases.count - 1, section: 0)
+                let indexToRemove = IndexPath(item: 0, section: 1)
+                self.doneCollection.performBatchUpdates({
+                    self.doneCollection.insertItems(at: [indexToInsert])
+                    self.doneCollection.deleteItems(at: [indexToRemove])
+                }, completion: nil)
+            } else {
+                let indexToUpdate = IndexPath(item: 0, section: 1)
+                self.doneCollection.reloadItems(at: [indexToUpdate])
+            }
+        }
     }
 }
