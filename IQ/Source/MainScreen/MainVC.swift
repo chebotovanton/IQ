@@ -109,7 +109,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         for i in 0..<coins.count {
             let animation = CAKeyframeAnimation(keyPath: "position")
             let coin = coins[i]
-            if i == 0 {
+            if i == coins.count - 1 {
                 // WARNING: Kekeke. Do a real delegate, moron!
                 animation.delegate = self
             }
