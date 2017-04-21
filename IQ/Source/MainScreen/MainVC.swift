@@ -8,13 +8,14 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
 
     private var sections: [Section] = []
     private let kCellIdentifier = "PurchaseCell"
     private let kHeaderIdentifier = "HeaderView"
+    private let detailsAnimator = DetailsAnimator()
 
     private var coins: [UIView] = []
 
@@ -207,6 +208,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         detailsVC.modalPresentationStyle = .overCurrentContext
         detailsVC.providesPresentationContextTransitionStyle = true;
 
+        detailsVC.transitioningDelegate = self
+//        navigationController?.pushViewController(detailsVC, animated: true)
         present(detailsVC, animated: true, completion: nil)
     }
 
@@ -237,4 +240,16 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
         }
     }
+
+    //MARK: - UIViewControllerTransitioningDelegate
+
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return detailsAnimator
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return detailsAnimator
+    }
+
 }

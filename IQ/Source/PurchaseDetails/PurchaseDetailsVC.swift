@@ -29,6 +29,7 @@ class PurchaseDetailsVC: UIViewController { //, UITableViewDelegate, UITableView
         }
         let rec = UITapGestureRecognizer(target: self, action: #selector(PurchaseDetailsVC.hide))
         view.addGestureRecognizer(rec)
+        actionsTable.addGestureRecognizer(rec)
     }
 
     private func setup(_ purchase: Purchase) {

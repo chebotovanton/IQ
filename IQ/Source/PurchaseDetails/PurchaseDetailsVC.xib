@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurchaseDetailsVC" customModule="IQ" customModuleProvider="target">
             <connections>
+                <outlet property="actionsTable" destination="yRC-oy-R0j" id="Epz-xs-qSr"/>
                 <outlet property="dateLabel" destination="1XD-Cj-VdF" id="8Yi-dO-Bkr"/>
                 <outlet property="iconView" destination="AJj-q4-LuO" id="Mls-75-a37"/>
                 <outlet property="nameLabel" destination="gpZ-QT-YLq" id="1y2-EC-tfX"/>
@@ -72,7 +73,7 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LaY-D1-LKg" firstAttribute="bottom" secondItem="7GK-V6-Jhz" secondAttribute="bottom" constant="8" id="33h-KE-ZRk"/>
                 <constraint firstItem="7GK-V6-Jhz" firstAttribute="trailing" secondItem="4C8-OY-kkh" secondAttribute="trailing" constant="15" id="561-RU-8q1"/>
