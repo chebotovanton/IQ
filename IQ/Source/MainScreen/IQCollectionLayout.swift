@@ -16,7 +16,8 @@ class IQCollectionLayout: UICollectionViewLayout {
     private let kMinCollapsedCellHeight: CGFloat = 56.0
     private let kHeaderHeight: CGFloat = 66.0
 
-    private var contentSize: CGFloat = 0
+    //WARNING: Weird workaround to set initial whitebackground visible
+    private var contentSize: CGFloat = 1000
 
     private var backgroundView = UIView()
 
@@ -25,6 +26,7 @@ class IQCollectionLayout: UICollectionViewLayout {
 
         collectionView?.addSubview(backgroundView)
         collectionView?.sendSubview(toBack: backgroundView)
+        backgroundView.layer.zPosition = -1000
         backgroundView.backgroundColor = Colors.whiteBackgroundColor()
     }
 
@@ -50,7 +52,7 @@ class IQCollectionLayout: UICollectionViewLayout {
                     headerY = max(offsetLim, heightSum + offsetLim)
                 } else if section == 1 {
                     headerY = max(heightSum, yOffset)
-                    backgroundView.frame = CGRect(x: 0, y: headerY + kHeaderHeight * 1.5, width: collectionView.frame.width, height: 2000)
+                    backgroundView.frame = CGRect(x: 0, y: headerY + kHeaderHeight * 1.5, width: collectionView.frame.width, height: contentSize)
                 } else {
                     headerY = max(heightSum, yOffset)
                 }
@@ -141,7 +143,8 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return collectionView?.contentOffset.y ?? 0 > 0
+        // WARNING: This should fix misterious scroll crash "layout attributes for supplementary item changed without invalidating the layout'"
+        return true//collectionView?.contentOffset.y ?? 0 > 0
     }
 
 }
