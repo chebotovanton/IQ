@@ -16,6 +16,8 @@ class IQCollectionLayout: UICollectionViewLayout {
     private let kMinCollapsedCellHeight: CGFloat = 56.0
     private let kHeaderHeight: CGFloat = 66.0
 
+    private var contentSize: CGFloat = 0
+
     private var backgroundView = UIView()
 
     override func prepare() {
@@ -27,18 +29,9 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     override var collectionViewContentSize: CGSize {
-        var width: CGFloat = 0
-        var height: CGFloat = 0
-        if let collectionView = collectionView {
-            width = collectionView.frame.size.width
-            for section in 0 ..< collectionView.numberOfSections {
-                for _ in 0 ..< collectionView.numberOfItems(inSection: section) {
-                    height += kHeaderHeight
-                }
-            }
-        }
-        height = 2000.0
-        return CGSize(width: width, height: height)
+        let width: CGFloat = collectionView?.frame.size.width ?? 0
+
+        return CGSize(width: width, height: contentSize)
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -131,6 +124,7 @@ class IQCollectionLayout: UICollectionViewLayout {
         let totalSum: CGFloat = CGFloat(10 * height)
         let y: CGFloat = max(totalSum + height * CGFloat(item), heightSum - kHeaderHeight)
         let attr = createAttr(y, indexPath: indexPath)
+        contentSize = attr.frame.maxY
         attr.zIndex = -200
 
         return attr
