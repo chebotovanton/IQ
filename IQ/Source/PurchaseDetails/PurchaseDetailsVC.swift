@@ -24,6 +24,9 @@ class PurchaseDetailsVC: UIViewController {
         if let purchase = purchase {
             setup(purchase)
         }
+
+        let rec = UITapGestureRecognizer(target: self, action: #selector(PurchaseDetailsVC.hide))
+        view.addGestureRecognizer(rec)
     }
 
     private func setup(_ purchase: Purchase) {
@@ -33,7 +36,7 @@ class PurchaseDetailsVC: UIViewController {
         progressView.setup(purchase.progress)
     }
 
-    @IBAction func dismiss() {
+    @objc @IBAction func hide() {
         dismiss(animated: true, completion: nil)
     }
 }
