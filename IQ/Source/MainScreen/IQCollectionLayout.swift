@@ -157,7 +157,7 @@ class IQCollectionLayout: UICollectionViewLayout {
         let height = kCellHeight + kBeetweenCellsSpace
         let result = height * countFloat + countFloat * (height - kMinCollapsedCellHeight) + CGFloat(2) * kHeaderHeight
 
-        return result + 200
+        return result + 100
     }
 
 }
