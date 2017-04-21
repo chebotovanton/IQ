@@ -16,6 +16,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     private let kCellIdentifier = "PurchaseCell"
     private let kHeaderIdentifier = "HeaderView"
 
+    private var coins: [UIView] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,14 +83,62 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Actions
 
     @IBAction func coinAction() {
-        if let purchase = sections[1].purchases.first {
-            purchase.progress = min(1, purchase.progress + 0.1)
-//            if purchase.progress == 1 {
-//                progressItems.remove(at: 0)
-//                doneItems.append(purchase)
-//            }
-            doneCollection.reloadData()
+        guard let doneCollection = doneCollection else { return }
+        // WARNING: Weird coin y const
+        let coinDestY = (doneCollection.layoutAttributesForItem(at: IndexPath(item: 0, section: 1))?.frame.origin.y)! - doneCollection.contentOffset.y + 70.0
+        for _ in 0...5 {
+            let coin = UIView()
+            let x = CGFloat(arc4random_uniform(300))
+            coin.frame = CGRect(x: x, y: 800, width: 20, height: 20)
+            coin.layer.cornerRadius = 10.0
+            coin.backgroundColor = Colors.progressColor()
+            view.addSubview(coin)
+            coins.append(coin)
         }
+//        UIView.animate(withDuration: 1.5, animations: {
+            for coin in self.coins {
+                let animation = CAKeyframeAnimation(keyPath: "position")
+                animation.calculationMode = kCAAnimationPaced
+                animation.fillMode = kCAFillModeForwards
+                animation.path = coinPath(coin, destY: coinDestY)
+                animation.duration = 2.0
+                animation.isRemovedOnCompletion = false
+                animation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
+
+                coin.layer.add(animation, forKey: "anim")
+            }
+//        }) { (finished) in
+//            for coin in self.coins {
+//                coin.removeFromSuperview()
+//            }
+//            if let purchase = self.sections[1].purchases.first {
+//                purchase.progress = min(1, purchase.progress + 0.1)
+//                if purchase.progress == 1 {
+//                    self.sections[1].purchases.remove(at: 0)
+//                    self.sections[0].purchases.append(purchase)
+//                    let indexToInsert = IndexPath(item: self.sections[0].purchases.count - 1, section: 0)
+//                    let indexToRemove = IndexPath(item: 0, section: 1)
+//                    self.doneCollection.performBatchUpdates({
+//                        self.doneCollection.insertItems(at: [indexToInsert])
+//                        self.doneCollection.deleteItems(at: [indexToRemove])
+//                    }, completion: nil)
+//                } else {
+//                    let indexToUpdate = IndexPath(item: 0, section: 1)
+//                    self.doneCollection.reloadItems(at: [indexToUpdate])
+//                }
+//            }
+    }
+
+    private func coinPath(_ coin: UIView, destY: CGFloat) -> CGPath {
+        let path = UIBezierPath()
+        let originPoint = coin.center
+        let xDelta = CGFloat(arc4random_uniform(300)) - 150.0
+        let controlPoint = CGPoint(x: coin.frame.origin.x + xDelta, y: (destY + coin.frame.origin.y) / 2.0)
+        let destinationPoint = CGPoint(x: coin.center.x, y: destY)
+        path.move(to: originPoint)
+        path.addQuadCurve(to: destinationPoint, controlPoint: controlPoint)
+
+        return path.cgPath
     }
 
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource

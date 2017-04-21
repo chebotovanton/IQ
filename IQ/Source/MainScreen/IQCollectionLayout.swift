@@ -36,7 +36,7 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        // WARNING: This should fix misterious scroll crash "layout attributes for supplementary item changed without invalidating the layout'"
+        // WARNING: This should fix misterious scroll crash "layout attributes for supplementary item changed without invalidating the layout"
         return true//collectionView?.contentOffset.y ?? 0 > 0
     }
 
