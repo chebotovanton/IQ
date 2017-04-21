@@ -18,7 +18,6 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     //WARNING: Weird workaround to set initial whitebackground visible
     private var contentSize: CGFloat = 1000
-
     private var backgroundView = UIView()
 
     override func prepare() {
@@ -128,8 +127,7 @@ class IQCollectionLayout: UICollectionViewLayout {
     private func lastSectionAttr(_ item: Int, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let indexPath = IndexPath(item: item, section: 2)
-        // WARNING: Weird const in code
-        let totalSum: CGFloat = CGFloat(10 * height)
+        let totalSum: CGFloat = secondSectionScrollLim()
         let y: CGFloat = max(totalSum + height * CGFloat(item), heightSum - kHeaderHeight)
         let attr = createAttr(y, indexPath: indexPath)
         contentSize = attr.frame.maxY
@@ -150,6 +148,16 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     private func firstSectionScrollLim() -> CGFloat {
         return CGFloat(collectionView?.numberOfItems(inSection: 0) ?? 0) * kCellHeight
+    }
+
+    private func secondSectionScrollLim() -> CGFloat {
+        // WARNING: Weird const in code
+        guard let collectionView = collectionView else { return 0.0 }
+        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 0) + collectionView.numberOfItems(inSection: 0))
+        let height = kCellHeight + kBeetweenCellsSpace
+        let result = height * countFloat + countFloat * (height - kMinCollapsedCellHeight) + CGFloat(2) * kHeaderHeight
+
+        return result
     }
 
 }
