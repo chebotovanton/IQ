@@ -82,6 +82,11 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     //MARK: - Actions
 
+    @IBAction func openBrowser() {
+        let browser = BrowserVC()
+        navigationController?.pushViewController(browser, animated: true)
+    }
+
     @IBAction func coinAction() {
         guard let doneCollection = doneCollection else { return }
         // WARNING: Weird coin y const

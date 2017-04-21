@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8D20746070765B210EEADFE1 /* Pods_IQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58C0CB52E33EAF7520782E0 /* Pods_IQ.framework */; };
+		9F1F4B971EAA6EE500506282 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F4B951EAA6EE500506282 /* BrowserVC.swift */; };
+		9F1F4B981EAA6EE500506282 /* BrowserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F4B961EAA6EE500506282 /* BrowserVC.xib */; };
 		9F38F39B1EA65CFC00418E2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9F38F39A1EA65CFC00418E2D /* Podfile */; };
 		9F38F39D1EA65DA400418E2D /* IQCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38F39C1EA65DA400418E2D /* IQCollectionLayout.swift */; };
 		9F38F39F1EA694A500418E2D /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F38F39E1EA694A500418E2D /* Section.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F1F4B951EAA6EE500506282 /* BrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
+		9F1F4B961EAA6EE500506282 /* BrowserVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserVC.xib; sourceTree = "<group>"; };
 		9F38F39A1EA65CFC00418E2D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		9F38F39C1EA65DA400418E2D /* IQCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQCollectionLayout.swift; sourceTree = "<group>"; };
 		9F38F39E1EA694A500418E2D /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9F1F4B941EAA6EBF00506282 /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				9F1F4B951EAA6EE500506282 /* BrowserVC.swift */,
+				9F1F4B961EAA6EE500506282 /* BrowserVC.xib */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
 		9F3E7CD11EA219E600456087 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +133,7 @@
 		9F3E7CEF1EA21B4A00456087 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				9F1F4B941EAA6EBF00506282 /* Browser */,
 				9FF65B811EA9E05D0061021B /* ProgressView */,
 				9FF65B7C1EA9DA530061021B /* PurchaseDetails */,
 				9F3E7CF01EA21B4A00456087 /* MainScreen */,
@@ -230,6 +244,7 @@
 				9F3E7CFA1EA2233D00456087 /* PurchaseCell.xib in Resources */,
 				9F3E7CF41EA21B6600456087 /* MainVC.xib in Resources */,
 				9FF65B751EA7E4140061021B /* Images.xcassets in Resources */,
+				9F1F4B981EAA6EE500506282 /* BrowserVC.xib in Resources */,
 				9F3E7CE81EA219E600456087 /* LaunchScreen.storyboard in Resources */,
 				9F3E7CE51EA219E600456087 /* Assets.xcassets in Resources */,
 				9FF65B791EA7F4410061021B /* HeaderView.xib in Resources */,
@@ -294,6 +309,7 @@
 				9F38F39D1EA65DA400418E2D /* IQCollectionLayout.swift in Sources */,
 				9FF65B7B1EA970470061021B /* Colors.swift in Sources */,
 				9F3E7CF91EA2233D00456087 /* PurchaseCell.swift in Sources */,
+				9F1F4B971EAA6EE500506282 /* BrowserVC.swift in Sources */,
 				9F3E7CDE1EA219E600456087 /* AppDelegate.swift in Sources */,
 				9FF65B7F1EA9DA810061021B /* PurchaseDetailsVC.swift in Sources */,
 				9F38F39F1EA694A500418E2D /* Section.swift in Sources */,
