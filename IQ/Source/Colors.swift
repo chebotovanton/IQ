@@ -13,4 +13,8 @@ class Colors: NSObject {
     static func whiteBackgroundColor() -> UIColor {
         return UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1.0)
     }
+
+    static func progressColor() -> UIColor {
+        return UIColor(red: 250.0/255.0, green: 241.0/255.0, blue: 93.0/255.0, alpha: 1.0)
+    }
 }

@@ -26,6 +26,7 @@
 		9FF65B7F1EA9DA810061021B /* PurchaseDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF65B7D1EA9DA810061021B /* PurchaseDetailsVC.swift */; };
 		9FF65B801EA9DA810061021B /* PurchaseDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B7E1EA9DA810061021B /* PurchaseDetailsVC.xib */; };
 		9FF65B831EA9E1390061021B /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF65B821EA9E1390061021B /* ProgressView.swift */; };
+		9FF65B851EA9E4AA0061021B /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF65B841EA9E4AA0061021B /* StringUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		9FF65B7D1EA9DA810061021B /* PurchaseDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDetailsVC.swift; sourceTree = "<group>"; };
 		9FF65B7E1EA9DA810061021B /* PurchaseDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseDetailsVC.xib; sourceTree = "<group>"; };
 		9FF65B821EA9E1390061021B /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		9FF65B841EA9E4AA0061021B /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		A58C0CB52E33EAF7520782E0 /* Pods_IQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA50E6D93B15C03EC7A8D7C2 /* Pods-IQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-IQ/Pods-IQ.release.xcconfig"; sourceTree = "<group>"; };
 		EEC36B825DDBE621E46B775A /* Pods-IQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IQ/Pods-IQ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				9FF65B7C1EA9DA530061021B /* PurchaseDetails */,
 				9F3E7CF01EA21B4A00456087 /* MainScreen */,
 				9FF65B7A1EA970470061021B /* Colors.swift */,
+				9FF65B841EA9E4AA0061021B /* StringUtils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				9F38F39F1EA694A500418E2D /* Section.swift in Sources */,
 				9F3E7CF31EA21B6600456087 /* MainVC.swift in Sources */,
 				9FF65B831EA9E1390061021B /* ProgressView.swift in Sources */,
+				9FF65B851EA9E4AA0061021B /* StringUtils.swift in Sources */,
 				9F3E7CF61EA2202D00456087 /* Purchase.swift in Sources */,
 				9FF65B771EA7F4340061021B /* HeaderView.swift in Sources */,
 			);

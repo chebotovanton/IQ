@@ -25,18 +25,21 @@ class ProgressView: UIView {
         layer.cornerRadius = 6
         clipsToBounds = true
 
-        let color = UIColor(red: 250.0/255.0, green: 241.0/255.0, blue: 93.0/255.0, alpha: 1.0)
+        let color = Colors.progressColor()
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.fillColor = color.cgColor
         shapeLayer.lineWidth = 1.0
         shapeLayer.position = CGPoint.zero
-
     }
 
     func setup(_ progress: CGFloat) {
         self.progress = progress
 
-        if progress > 0 {
+        if progress == 1 {
+            shapeLayer.path = nil
+            backgroundColor = Colors.progressColor()
+        } else if progress > 0 {
+            backgroundColor = UIColor.white
             let newPath = createBezierPath(progress).cgPath
 
             //        let myAnimation = CABasicAnimation(keyPath: "path")
@@ -48,6 +51,7 @@ class ProgressView: UIView {
             //        shapeLayer.add(myAnimation, forKey: "animatePath")
             shapeLayer.path = newPath
         } else {
+            backgroundColor = UIColor.white
             shapeLayer.path = nil
         }
 

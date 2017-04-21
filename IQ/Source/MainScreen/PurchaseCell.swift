@@ -18,17 +18,8 @@ class PurchaseCell: UICollectionViewCell {
 
     func setup(_ purchase: Purchase) {
         nameLabel.text = purchase.name
-        priceLabel.text = priceText(purchase.price, progress: purchase.progress)
+        priceLabel.text = StringUtils.priceText(purchase.price, progress: purchase.progress)
         iconView.image = purchase.icon
         progressView.setup(purchase.progress)
-    }
-
-    private func priceText(_ price: Int, progress: CGFloat) -> String {
-        if progress == 0 || progress == 1  {
-            return "$" + String(price)
-        } else {
-            let currentValue = Int(CGFloat(price) * progress)
-            return "$" + String(currentValue) + " / " + "$" + String(price)
-        }
     }
 }

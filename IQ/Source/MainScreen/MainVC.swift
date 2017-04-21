@@ -126,6 +126,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let purchase = section.purchases[indexPath.item]
 
         let detailsVC = PurchaseDetailsVC(nibName: "PurchaseDetailsVC", bundle: nil)
+        detailsVC.purchase = purchase
 
         detailsVC.definesPresentationContext = true
         detailsVC.modalPresentationStyle = .overCurrentContext
