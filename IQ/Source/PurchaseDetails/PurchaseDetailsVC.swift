@@ -18,6 +18,7 @@ class PurchaseDetailsVC: UIViewController { //, UITableViewDelegate, UITableView
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var progressView: ProgressView!
     @IBOutlet private weak var actionsTable: UITableView!
+    @IBOutlet private weak var overlayView: UIView!
 
     private var items: [PurchaseAction] = []
 
@@ -28,8 +29,7 @@ class PurchaseDetailsVC: UIViewController { //, UITableViewDelegate, UITableView
             setup(purchase)
         }
         let rec = UITapGestureRecognizer(target: self, action: #selector(PurchaseDetailsVC.hide))
-        view.addGestureRecognizer(rec)
-        actionsTable.addGestureRecognizer(rec)
+        overlayView.addGestureRecognizer(rec)
     }
 
     private func setup(_ purchase: Purchase) {

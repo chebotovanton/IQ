@@ -15,6 +15,7 @@
                 <outlet property="dateLabel" destination="1XD-Cj-VdF" id="8Yi-dO-Bkr"/>
                 <outlet property="iconView" destination="AJj-q4-LuO" id="Mls-75-a37"/>
                 <outlet property="nameLabel" destination="gpZ-QT-YLq" id="1y2-EC-tfX"/>
+                <outlet property="overlayView" destination="ILS-Bl-i2w" id="aIo-1N-xz1"/>
                 <outlet property="priceLabel" destination="4C8-OY-kkh" id="03Z-my-fzP"/>
                 <outlet property="progressView" destination="7GK-V6-Jhz" id="exO-Mf-kT6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,6 +26,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILS-Bl-i2w">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.01" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8k-v4-Lgu">
                     <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                     <subviews>
@@ -77,12 +82,15 @@
             <constraints>
                 <constraint firstItem="LaY-D1-LKg" firstAttribute="bottom" secondItem="7GK-V6-Jhz" secondAttribute="bottom" constant="8" id="33h-KE-ZRk"/>
                 <constraint firstItem="7GK-V6-Jhz" firstAttribute="trailing" secondItem="4C8-OY-kkh" secondAttribute="trailing" constant="15" id="561-RU-8q1"/>
+                <constraint firstAttribute="bottom" secondItem="ILS-Bl-i2w" secondAttribute="bottom" id="DgF-lE-Rxp"/>
                 <constraint firstItem="G8k-v4-Lgu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="160" id="H7D-7n-mHs"/>
                 <constraint firstItem="LaY-D1-LKg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="H7Y-J7-W6x"/>
                 <constraint firstItem="7GK-V6-Jhz" firstAttribute="leading" secondItem="LaY-D1-LKg" secondAttribute="leading" constant="5" id="JBn-C2-aES"/>
+                <constraint firstItem="ILS-Bl-i2w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="P5C-Ml-Jsi"/>
                 <constraint firstItem="gpZ-QT-YLq" firstAttribute="leading" secondItem="AJj-q4-LuO" secondAttribute="trailing" constant="15" id="PmK-zx-Q42"/>
                 <constraint firstAttribute="trailing" secondItem="G8k-v4-Lgu" secondAttribute="trailing" id="QMJ-vY-Sbq"/>
                 <constraint firstItem="1XD-Cj-VdF" firstAttribute="leading" secondItem="AJj-q4-LuO" secondAttribute="trailing" constant="15" id="XaT-9o-PGD"/>
+                <constraint firstAttribute="trailing" secondItem="ILS-Bl-i2w" secondAttribute="trailing" id="a3m-Pv-Fht"/>
                 <constraint firstItem="7GK-V6-Jhz" firstAttribute="bottom" secondItem="1XD-Cj-VdF" secondAttribute="bottom" constant="15" id="aeV-ZD-4WZ"/>
                 <constraint firstItem="4C8-OY-kkh" firstAttribute="centerY" secondItem="7GK-V6-Jhz" secondAttribute="centerY" id="b4D-qy-yUm"/>
                 <constraint firstItem="gpZ-QT-YLq" firstAttribute="top" secondItem="7GK-V6-Jhz" secondAttribute="top" constant="15" id="cDw-up-Nsz"/>
@@ -93,6 +101,7 @@
                 <constraint firstItem="yRC-oy-R0j" firstAttribute="top" secondItem="7GK-V6-Jhz" secondAttribute="bottom" id="e7V-oA-rS4"/>
                 <constraint firstItem="LaY-D1-LKg" firstAttribute="trailing" secondItem="7GK-V6-Jhz" secondAttribute="trailing" constant="5" id="ePk-uK-OR7"/>
                 <constraint firstItem="G8k-v4-Lgu" firstAttribute="top" secondItem="LaY-D1-LKg" secondAttribute="top" constant="40" id="ftW-St-BIu"/>
+                <constraint firstItem="ILS-Bl-i2w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hHD-P8-fYS"/>
                 <constraint firstItem="7GK-V6-Jhz" firstAttribute="top" secondItem="LaY-D1-LKg" secondAttribute="top" constant="4" id="i5r-Mt-BZI"/>
                 <constraint firstAttribute="trailing" secondItem="LaY-D1-LKg" secondAttribute="trailing" constant="20" id="vgH-dg-IPS"/>
             </constraints>
