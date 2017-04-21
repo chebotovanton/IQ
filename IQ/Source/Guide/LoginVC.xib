@@ -19,20 +19,34 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xq-hR-I8U">
-                    <rect key="frame" x="20" y="150" width="335" height="30"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xq-hR-I8U">
+                    <rect key="frame" x="20" y="150" width="335" height="21"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozw-Iw-9XF">
-                    <rect key="frame" x="20" y="220" width="335" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaQ-lj-EuF" userLabel="DividerView">
+                    <rect key="frame" x="20" y="171" width="335" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="g8B-Ze-hzr"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozw-Iw-9XF">
+                    <rect key="frame" x="20" y="211" width="335" height="21"/>
                     <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="go" secureTextEntry="YES"/>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVh-9b-5Re" userLabel="DividerView">
+                    <rect key="frame" x="20" y="232" width="335" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="0oG-35-1mk"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ib-7z-vDV">
-                    <rect key="frame" x="172.5" y="318" width="30" height="30"/>
+                    <rect key="frame" x="172.5" y="300" width="30" height="30"/>
                     <state key="normal" title="Go">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -43,14 +57,20 @@
             </subviews>
             <color key="backgroundColor" red="0.21960784310000001" green="0.36862745099999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="bVh-9b-5Re" firstAttribute="top" secondItem="ozw-Iw-9XF" secondAttribute="bottom" id="1gf-RJ-ntr"/>
                 <constraint firstItem="ozw-Iw-9XF" firstAttribute="leading" secondItem="2xq-hR-I8U" secondAttribute="leading" id="3nH-5B-2yy"/>
                 <constraint firstItem="2xq-hR-I8U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="5Vh-HD-DcA"/>
                 <constraint firstItem="6Ib-7z-vDV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DYb-H0-NJF"/>
                 <constraint firstItem="ozw-Iw-9XF" firstAttribute="top" secondItem="2xq-hR-I8U" secondAttribute="bottom" constant="40" id="HvZ-iM-ypK"/>
+                <constraint firstItem="NaQ-lj-EuF" firstAttribute="top" secondItem="2xq-hR-I8U" secondAttribute="bottom" id="OJG-OB-J1E"/>
                 <constraint firstItem="6Ib-7z-vDV" firstAttribute="top" secondItem="ozw-Iw-9XF" secondAttribute="bottom" constant="68" id="UYL-UD-ecU"/>
+                <constraint firstItem="bVh-9b-5Re" firstAttribute="leading" secondItem="ozw-Iw-9XF" secondAttribute="leading" id="VB9-aY-hUc"/>
+                <constraint firstItem="NaQ-lj-EuF" firstAttribute="leading" secondItem="2xq-hR-I8U" secondAttribute="leading" id="Vpo-xr-3px"/>
+                <constraint firstItem="bVh-9b-5Re" firstAttribute="trailing" secondItem="ozw-Iw-9XF" secondAttribute="trailing" id="iAm-pf-hxJ"/>
                 <constraint firstItem="2xq-hR-I8U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="mvN-qw-s24"/>
                 <constraint firstAttribute="trailing" secondItem="2xq-hR-I8U" secondAttribute="trailing" constant="20" id="og8-SR-FCX"/>
                 <constraint firstItem="ozw-Iw-9XF" firstAttribute="trailing" secondItem="2xq-hR-I8U" secondAttribute="trailing" id="vsM-A3-p7H"/>
+                <constraint firstItem="NaQ-lj-EuF" firstAttribute="trailing" secondItem="2xq-hR-I8U" secondAttribute="trailing" id="wbg-tm-eZB"/>
             </constraints>
         </view>
     </objects>
