@@ -13,7 +13,7 @@ class DetailsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     private let overlayView = UIView()
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 3.0
+        return 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
