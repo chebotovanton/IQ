@@ -50,7 +50,7 @@ class BrowserVC: UIViewController, WKUIDelegate {
         return nil;
     }
 
-    func webViewDidClose(webView: WKWebView) {
+    @nonobjc func webViewDidClose(webView: WKWebView) {
         // Popup window is closed, we remove it
         webView.removeFromSuperview()
     }

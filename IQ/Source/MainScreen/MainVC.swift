@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate, SectionsDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
     
@@ -28,6 +28,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         doneCollection.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderIdentifier)
 
         let doneLayout = IQCollectionLayout()
+        doneLayout.sectionsDelegate = self
         doneCollection.collectionViewLayout = doneLayout
         doneCollection.alwaysBounceVertical = true
 
@@ -37,9 +38,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Private
 
     private func createSections() -> [Section] {
-        return [Section(createFakeDoneItems(), name: "Done"),
-                Section(createFakeProgressItems(), name: "In Progress"),
-                Section(createFakeQueueItems(), name: "In queue")
+        return [
+//                Section(createFakeDoneItems(), name: "Done", layoutStyle: .done),
+                Section(createFakeProgressItems(), name: "In Progress", layoutStyle: .progress),
+                Section(createFakeQueueItems(), name: "In queue", layoutStyle: .queue)
         ]
     }
 
@@ -243,6 +245,12 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return detailsAnimator
+    }
+
+    //MARK: - SectionsDelegate
+
+    func section(_ index: Int) -> Section {
+        return sections[index]
     }
 
 }
