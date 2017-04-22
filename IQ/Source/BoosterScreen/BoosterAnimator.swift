@@ -21,7 +21,7 @@ class BoosterAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
 
         if let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) {
-            let containerView = transitionContext.containerView
+            let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from)
 
             overlayView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
             overlayView.frame = containerView.bounds

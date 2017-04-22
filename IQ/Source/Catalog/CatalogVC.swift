@@ -40,7 +40,7 @@ class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         result.append(CatalogItem(name: "15 Bottles of Wine", price: "$340, CashBack 81%", icon: UIImage(named: "wine")!, urlString: "https://www.groupon.com/deals/gg-wine-insiders-15-bottles-of-wine"))
 
         let icon = UIImage(named: "nike")!
-        let urlString = "https://www.ebates.com/livingsocial_11445-xfas?special=11944400&sourceName=Web-Desktop"
+        let urlString = "https://afisha.yandex.ru/saint-petersburg/cinema?preset=today"
             result.append(CatalogItem(name: "NIKE N-95", price: "$240, CashBack 40%", icon: icon, urlString: urlString))
 
         return result
