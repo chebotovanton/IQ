@@ -11,7 +11,6 @@ import UIKit
 class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
-    @IBOutlet private weak var scrollableContentView: UIView!
     @IBOutlet private weak var pageControl: UIPageControl!
 
     private var sections: [Section] = []
@@ -34,14 +33,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         doneCollection.alwaysBounceVertical = true
 
         sections = createSections()
-
-        let swipeLeftRec = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
-        swipeLeftRec.direction = .left
-        view.addGestureRecognizer(swipeLeftRec)
-
-        let swipeRightRec = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight))
-        swipeRightRec.direction = .right
-        view.addGestureRecognizer(swipeRightRec)
     }
 
     //MARK: - Private
@@ -89,32 +80,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let iconName = "logo" + String(i)
             purchase.icon = UIImage(named: iconName)
         }
-    }
-
-    @objc func swipeLeft() {
-        UIView.animate(withDuration: 1.0,
-                       animations: {
-                        let frame = CGRect(x: -self.view.frame.width,
-                                           y: self.scrollableContentView.frame.origin.y,
-                                           width: self.scrollableContentView.frame.width,
-                                           height: self.scrollableContentView.frame.height)
-                        self.scrollableContentView.frame = frame
-        }, completion: { (finished) in
-            self.pageControl.currentPage = 1
-        })
-    }
-
-    @objc func swipeRight() {
-        UIView.animate(withDuration: 1.0,
-                       animations: {
-                        let frame = CGRect(x: 0,
-                                           y: self.scrollableContentView.frame.origin.y,
-                                           width: self.scrollableContentView.frame.width,
-                                           height: self.scrollableContentView.frame.height)
-                        self.scrollableContentView.frame = frame
-        }, completion: { (finished) in
-            self.pageControl.currentPage = 0
-        })
     }
 
     //MARK: - Actions

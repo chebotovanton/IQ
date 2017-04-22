@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let mainVC = MainVC(nibName: "MainVC", bundle: nil)
-        let navVC = UINavigationController(rootViewController: mainVC)
+        let pageControllerVC = PageControllerVC(nibName: "PageControllerVC", bundle: nil)
+        let navVC = UINavigationController(rootViewController: pageControllerVC)
         window?.rootViewController = navVC
         navVC.setNavigationBarHidden(true, animated: false)
 
-        let loginVC = LoginVC(nibName: "LoginVC", bundle: nil)
-        let guideNavVC = UINavigationController(rootViewController: loginVC)
-        guideNavVC.setNavigationBarHidden(true, animated: false)
-        window?.rootViewController?.present(guideNavVC, animated: false, completion: nil)
+//        let loginVC = LoginVC(nibName: "LoginVC", bundle: nil)
+//        let guideNavVC = UINavigationController(rootViewController: loginVC)
+//        guideNavVC.setNavigationBarHidden(true, animated: false)
+//        window?.rootViewController?.present(guideNavVC, animated: false, completion: nil)
 
         return true
     }
