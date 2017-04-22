@@ -12,6 +12,8 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var contentScroll: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet private weak var buttonView: UIView!
+    @IBOutlet private weak var buttonViewBottom: NSLayoutConstraint!
 
     private var catalogVC: CatalogVC!
     private var mainVC: MainVC!
@@ -27,15 +29,16 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate {
 
         let width = view.frame.width
         let height = contentScroll.frame.height
-        // WARNING: What's the problem with the height?
-        contentScroll.contentSize = CGSize(width: width * 2.0, height: height)
 
+        contentScroll.contentSize = CGSize(width: width * 2.0, height: height)
         mainVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
         catalogVC.view.frame = CGRect(x: width, y: 0, width: width, height: height)
 
         contentScroll.addSubview(mainVC.view)
         contentScroll.addSubview(catalogVC.view)
     }
+
+    
 
     // MARK: - UIScrollViewDelegate
 
@@ -45,5 +48,11 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate {
         } else {
             pageControl.currentPage = 0
         }
+
+        var progress = scrollView.contentOffset.x / view.frame.width
+        progress = min(1.0, progress)
+        progress = max(progress, 0.0)
+
+        buttonViewBottom.constant = -buttonView.frame.height * progress
     }
 }

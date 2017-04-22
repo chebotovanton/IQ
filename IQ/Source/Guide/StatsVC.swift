@@ -11,6 +11,7 @@ import UIKit
 class StatsVC: UIViewController {
 
     @IBOutlet private weak var navBarView: UIView!
+    @IBOutlet private weak var bottomView: UIView!
 
     override func viewDidLoad() {
         navBarView.layer.shadowRadius = 16.0
@@ -18,6 +19,13 @@ class StatsVC: UIViewController {
         navBarView.layer.shadowColor = navBarView.backgroundColor?.cgColor
         navBarView.layer.masksToBounds = false
         navBarView.layer.shadowOpacity = 0.24
+
+        bottomView.layer.cornerRadius = 12
+        bottomView.layer.shadowRadius = 12.0
+        bottomView.layer.shadowOffset = CGSize(width: 0, height: -2)
+        bottomView.layer.shadowColor = UIColor.black.cgColor
+        bottomView.layer.masksToBounds = false
+        bottomView.layer.shadowOpacity = 0.18
     }
 
     @IBAction func close() {

@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageControllerVC" customModule="IQ" customModuleProvider="target">
             <connections>
+                <outlet property="buttonView" destination="nil-11-814" id="1Vf-zg-rnb"/>
+                <outlet property="buttonViewBottom" destination="9BU-1Y-tBU" id="6sx-fv-E9w"/>
                 <outlet property="contentScroll" destination="qQt-vE-5Y5" id="LqS-RY-12M"/>
                 <outlet property="pageControl" destination="pin-a2-sFY" id="epl-oe-Wky"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,16 +33,60 @@
                         <outlet property="delegate" destination="-1" id="Wat-Ki-qhc"/>
                     </connections>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nil-11-814">
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62O-cK-PKh">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <color key="backgroundColor" red="0.21960784310000001" green="0.36862745099999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boosterGraphIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nwX-cw-TQb">
+                            <rect key="frame" x="20" y="13" width="57" height="34"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cw7-90-4R7">
+                            <rect key="frame" x="318" y="19" width="37" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Booster $0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbh-XA-Zxn">
+                            <rect key="frame" x="97" y="19" width="124" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="62O-cK-PKh" firstAttribute="leading" secondItem="nil-11-814" secondAttribute="leading" id="2oP-I6-hlt"/>
+                        <constraint firstItem="Rbh-XA-Zxn" firstAttribute="leading" secondItem="nwX-cw-TQb" secondAttribute="trailing" constant="20" id="5h0-H5-U8c"/>
+                        <constraint firstItem="nwX-cw-TQb" firstAttribute="centerY" secondItem="nil-11-814" secondAttribute="centerY" id="8Zm-xL-n9b"/>
+                        <constraint firstItem="Cw7-90-4R7" firstAttribute="centerY" secondItem="nil-11-814" secondAttribute="centerY" id="Hf9-9t-jdC"/>
+                        <constraint firstAttribute="height" constant="60" id="I3l-De-PBC"/>
+                        <constraint firstItem="62O-cK-PKh" firstAttribute="top" secondItem="nil-11-814" secondAttribute="top" id="QEC-UG-8oG"/>
+                        <constraint firstItem="Rbh-XA-Zxn" firstAttribute="centerY" secondItem="nil-11-814" secondAttribute="centerY" id="ccF-rb-cvl"/>
+                        <constraint firstItem="nwX-cw-TQb" firstAttribute="leading" secondItem="nil-11-814" secondAttribute="leading" constant="20" id="eaS-Db-uMP"/>
+                        <constraint firstAttribute="trailing" secondItem="Cw7-90-4R7" secondAttribute="trailing" constant="20" id="oRr-K5-Tup"/>
+                        <constraint firstAttribute="bottom" secondItem="62O-cK-PKh" secondAttribute="bottom" id="pks-r1-1le"/>
+                        <constraint firstAttribute="trailing" secondItem="62O-cK-PKh" secondAttribute="trailing" id="w8y-EQ-ucJ"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.2784313725" green="0.4941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="qQt-vE-5Y5" secondAttribute="trailing" id="4yI-p9-Zc3"/>
+                <constraint firstAttribute="bottom" secondItem="nil-11-814" secondAttribute="bottom" id="9BU-1Y-tBU"/>
                 <constraint firstItem="qQt-vE-5Y5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="ACt-jt-QRq"/>
                 <constraint firstAttribute="bottom" secondItem="qQt-vE-5Y5" secondAttribute="bottom" id="CrU-aD-0at"/>
                 <constraint firstItem="qQt-vE-5Y5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bMS-6N-b5O"/>
                 <constraint firstItem="pin-a2-sFY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="f5Q-dI-UBu"/>
+                <constraint firstAttribute="trailing" secondItem="nil-11-814" secondAttribute="trailing" id="hOV-ER-wGu"/>
+                <constraint firstItem="nil-11-814" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k2w-AF-lTH"/>
                 <constraint firstItem="pin-a2-sFY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="r8k-4C-5mp"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="boosterGraphIcon" width="57" height="34"/>
+    </resources>
 </document>
