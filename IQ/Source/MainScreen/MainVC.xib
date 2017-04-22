@@ -35,8 +35,8 @@
                         <outlet property="delegate" destination="-1" id="eex-IE-eTm"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH3-dL-3aX">
-                    <rect key="frame" x="0.0" y="303" width="375" height="60"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH3-dL-3aX">
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <color key="backgroundColor" red="0.2196078431372549" green="0.36862745098039218" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="MlX-xS-oNd"/>
@@ -45,20 +45,17 @@
                         <action selector="coinAction" destination="-1" eventType="touchUpInside" id="VH5-sy-pfz"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boosterGraphIcon" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-V0-uym">
-                    <rect key="frame" x="159" y="316" width="57" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boosterGraphIcon" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-V0-uym">
+                    <rect key="frame" x="20" y="620" width="57" height="34"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Booster $0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8g-4O-ZbJ">
-                    <rect key="frame" x="125" y="323" width="124" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Booster $0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8g-4O-ZbJ">
+                    <rect key="frame" x="97" y="626.5" width="124" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWj-GJ-FaN">
-                    <rect key="frame" x="169" y="323" width="37" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWj-GJ-FaN">
+                    <rect key="frame" x="318" y="626.5" width="37" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -80,7 +77,16 @@
             <color key="backgroundColor" red="0.27843137254901962" green="0.49411764705882355" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="C7b-LX-jRo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="3dK-zi-w5n"/>
+                <constraint firstItem="30Z-V0-uym" firstAttribute="leading" secondItem="fH3-dL-3aX" secondAttribute="leading" constant="20" id="5nB-p7-Vuk"/>
+                <constraint firstAttribute="bottom" secondItem="fH3-dL-3aX" secondAttribute="bottom" id="8aP-yz-gtS"/>
+                <constraint firstItem="fH3-dL-3aX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="90V-rr-qP1"/>
+                <constraint firstItem="l8g-4O-ZbJ" firstAttribute="leading" secondItem="30Z-V0-uym" secondAttribute="trailing" constant="20" id="Bel-fm-Kqk"/>
+                <constraint firstItem="CWj-GJ-FaN" firstAttribute="centerY" secondItem="fH3-dL-3aX" secondAttribute="centerY" id="HBJ-oY-m72"/>
                 <constraint firstItem="C7b-LX-jRo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Pf8-89-l0v"/>
+                <constraint firstItem="l8g-4O-ZbJ" firstAttribute="centerY" secondItem="30Z-V0-uym" secondAttribute="centerY" id="Wbv-f5-uht"/>
+                <constraint firstItem="fH3-dL-3aX" firstAttribute="trailing" secondItem="CWj-GJ-FaN" secondAttribute="trailing" constant="20" id="lkN-hH-aug"/>
+                <constraint firstItem="30Z-V0-uym" firstAttribute="centerY" secondItem="fH3-dL-3aX" secondAttribute="centerY" id="qYH-y4-etg"/>
+                <constraint firstAttribute="trailing" secondItem="fH3-dL-3aX" secondAttribute="trailing" id="vqw-N6-fF9"/>
             </constraints>
             <point key="canvasLocation" x="75.5" y="53.5"/>
         </view>
