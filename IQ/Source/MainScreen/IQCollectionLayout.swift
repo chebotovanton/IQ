@@ -133,7 +133,7 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     private func queueSectionAttr(_ indexPath: IndexPath, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
-        let totalSum: CGFloat = secondSectionScrollLim()
+        let totalSum: CGFloat = heightSum//secondSectionScrollLim()
         let y: CGFloat = max(totalSum + height * CGFloat(indexPath.item), heightSum - kHeaderHeight)
         let attr = createAttr(y, indexPath: indexPath)
         contentSize = attr.frame.maxY

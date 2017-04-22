@@ -39,7 +39,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func createSections() -> [Section] {
         return [
-//                Section(createFakeDoneItems(), name: "Done", layoutStyle: .done),
+                Section(createFakeDoneItems(), name: "Done", layoutStyle: .done),
                 Section(createFakeProgressItems(), name: "In Progress", layoutStyle: .progress),
                 Section(createFakeQueueItems(), name: "In queue", layoutStyle: .queue)
         ]
@@ -226,7 +226,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 if sections.count == 2 {
                     self.sections[0].purchases.remove(at: 0)
                     self.sections.insert(Section([purchase], name: "Done", layoutStyle: .done), at: 0)
-
                     let indexToRemove = IndexPath(item: 0, section: 0)
                     let indexSet: IndexSet = [0]
                     self.doneCollection.performBatchUpdates({
