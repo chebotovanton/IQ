@@ -151,14 +151,15 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     private func secondSectionScrollLim() -> CGFloat {
-        // WARNING: Weird const in code
         guard let collectionView = collectionView else { return 0.0 }
         let countFloat = CGFloat(collectionView.numberOfItems(inSection: 0) + collectionView.numberOfItems(inSection: 0))
         let height = kCellHeight + kBeetweenCellsSpace
         let result = height * countFloat + countFloat * (height - kMinCollapsedCellHeight) + CGFloat(2) * kHeaderHeight
 
 //        return result
-        return height * 16.0
+
+        // WARNING: Weird const in code
+        return height * 10.0
     }
 
 }

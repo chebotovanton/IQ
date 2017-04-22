@@ -37,15 +37,15 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Private
 
     private func createSections() -> [Section] {
-        return [Section(createFakeDoneItems(), name: "Latest Returned"),
-                Section(createFakeProgressItems(), name: "In Turn"),
-                Section(createFakeQueueItems(), name: "Purchased")
+        return [Section(createFakeDoneItems(), name: "Done"),
+                Section(createFakeProgressItems(), name: "In Progress"),
+                Section(createFakeQueueItems(), name: "In queue")
         ]
     }
 
     private func createFakeDoneItems() -> [Purchase] {
         var result: [Purchase] = []
-        for i in 0...4 {
+        for i in 0..<3 {
             result.append(Purchase(name: "Done " + String(i), progress: 1))
         }
         setFakeIcons(result)
@@ -55,7 +55,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func createFakeProgressItems() -> [Purchase] {
         var result: [Purchase] = []
-        for i in 0...4 {
+        for i in 0..<3 {
             result.append(Purchase(name: "In progress " + String(i), progress: 0.1))
         }
         setFakeIcons(result)
@@ -82,11 +82,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     //MARK: - Actions
-
-    @IBAction func openBrowser() {
-        let browser = BrowserVC()
-        navigationController?.pushViewController(browser, animated: true)
-    }
 
     @IBAction func coinAction() {
         guard let doneCollection = doneCollection else { return }

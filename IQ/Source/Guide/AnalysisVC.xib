@@ -19,6 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-PI-rGj">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analyzing your expenses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34a-hC-H1V">
                     <rect key="frame" x="56.5" y="220" width="263.5" height="26.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -33,9 +36,16 @@
             <constraints>
                 <constraint firstItem="34a-hC-H1V" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1QL-zN-brt"/>
                 <constraint firstItem="WCs-H4-yms" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5tL-7q-3M9"/>
+                <constraint firstAttribute="trailing" secondItem="pXN-PI-rGj" secondAttribute="trailing" id="G3w-rH-uxb"/>
                 <constraint firstItem="WCs-H4-yms" firstAttribute="top" secondItem="34a-hC-H1V" secondAttribute="bottom" constant="40" id="WXA-hk-0GU"/>
+                <constraint firstItem="pXN-PI-rGj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jDI-aR-C2m"/>
+                <constraint firstItem="pXN-PI-rGj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mcR-A0-ORZ"/>
                 <constraint firstItem="34a-hC-H1V" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="220" id="o1s-gC-Z7c"/>
+                <constraint firstAttribute="bottom" secondItem="pXN-PI-rGj" secondAttribute="bottom" id="xIk-VS-Pwd"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="loginBackground" width="375" height="667"/>
+    </resources>
 </document>

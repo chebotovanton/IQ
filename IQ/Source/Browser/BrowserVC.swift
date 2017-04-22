@@ -12,19 +12,20 @@ import WebKit
 class BrowserVC: UIViewController {
 
     private var webView: WKWebView!
+    var urlString: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let config = WKWebViewConfiguration()
-//        config.userContentController = userContentController;
         webView = WKWebView(frame: view.frame, configuration: config)
         view.addSubview(webView)
-        
-        let urlString = "https://google.com"
-        let url = URL(string: urlString)!
-        let request = URLRequest(url: url)
-        webView.load(request)
+
+        if let urlString = urlString {
+            let url = URL(string: urlString)!
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

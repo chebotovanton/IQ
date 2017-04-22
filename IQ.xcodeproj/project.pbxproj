@@ -41,6 +41,11 @@
 		9FF8B1F61EAB3C8900FF60FF /* CatalogVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8B1F41EAB3C8900FF60FF /* CatalogVC.xib */; };
 		9FF8B1FA1EAB3CC100FF60FF /* PageControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8B1F81EAB3CC100FF60FF /* PageControllerVC.swift */; };
 		9FF8B1FB1EAB3CC100FF60FF /* PageControllerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8B1F91EAB3CC100FF60FF /* PageControllerVC.xib */; };
+		9FF8B1FD1EAB5D8A00FF60FF /* CatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8B1FC1EAB5D8A00FF60FF /* CatalogItem.swift */; };
+		9FF8B2001EAB62CB00FF60FF /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8B1FE1EAB62CB00FF60FF /* CatalogCell.swift */; };
+		9FF8B2011EAB62CB00FF60FF /* CatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8B1FF1EAB62CB00FF60FF /* CatalogCell.xib */; };
+		9FF8B2041EAB6F4900FF60FF /* CatalogHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8B2021EAB6F4900FF60FF /* CatalogHeader.swift */; };
+		9FF8B2051EAB6F4900FF60FF /* CatalogHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8B2031EAB6F4900FF60FF /* CatalogHeader.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +84,11 @@
 		9FF8B1F41EAB3C8900FF60FF /* CatalogVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogVC.xib; sourceTree = "<group>"; };
 		9FF8B1F81EAB3CC100FF60FF /* PageControllerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControllerVC.swift; sourceTree = "<group>"; };
 		9FF8B1F91EAB3CC100FF60FF /* PageControllerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageControllerVC.xib; sourceTree = "<group>"; };
+		9FF8B1FC1EAB5D8A00FF60FF /* CatalogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItem.swift; sourceTree = "<group>"; };
+		9FF8B1FE1EAB62CB00FF60FF /* CatalogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
+		9FF8B1FF1EAB62CB00FF60FF /* CatalogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogCell.xib; sourceTree = "<group>"; };
+		9FF8B2021EAB6F4900FF60FF /* CatalogHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogHeader.swift; sourceTree = "<group>"; };
+		9FF8B2031EAB6F4900FF60FF /* CatalogHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogHeader.xib; sourceTree = "<group>"; };
 		A58C0CB52E33EAF7520782E0 /* Pods_IQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA50E6D93B15C03EC7A8D7C2 /* Pods-IQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-IQ/Pods-IQ.release.xcconfig"; sourceTree = "<group>"; };
 		EEC36B825DDBE621E46B775A /* Pods-IQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IQ/Pods-IQ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +233,11 @@
 			children = (
 				9FF8B1F31EAB3C8900FF60FF /* CatalogVC.swift */,
 				9FF8B1F41EAB3C8900FF60FF /* CatalogVC.xib */,
+				9FF8B1FE1EAB62CB00FF60FF /* CatalogCell.swift */,
+				9FF8B1FF1EAB62CB00FF60FF /* CatalogCell.xib */,
+				9FF8B1FC1EAB5D8A00FF60FF /* CatalogItem.swift */,
+				9FF8B2021EAB6F4900FF60FF /* CatalogHeader.swift */,
+				9FF8B2031EAB6F4900FF60FF /* CatalogHeader.xib */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -304,6 +319,8 @@
 				9FF8B1F61EAB3C8900FF60FF /* CatalogVC.xib in Resources */,
 				9F1F4BA31EAAA1B700506282 /* AnalysisVC.xib in Resources */,
 				9FF65B801EA9DA810061021B /* PurchaseDetailsVC.xib in Resources */,
+				9FF8B2011EAB62CB00FF60FF /* CatalogCell.xib in Resources */,
+				9FF8B2051EAB6F4900FF60FF /* CatalogHeader.xib in Resources */,
 				9F38F39B1EA65CFC00418E2D /* Podfile in Resources */,
 				9F1F4BA71EAAA1C700506282 /* StatsVC.xib in Resources */,
 				9F3E7CFA1EA2233D00456087 /* PurchaseCell.xib in Resources */,
@@ -377,10 +394,13 @@
 				9F1F4B9E1EAAA1A500506282 /* LoginVC.swift in Sources */,
 				9F3E7CF91EA2233D00456087 /* PurchaseCell.swift in Sources */,
 				9F1F4B971EAA6EE500506282 /* BrowserVC.swift in Sources */,
+				9FF8B1FD1EAB5D8A00FF60FF /* CatalogItem.swift in Sources */,
 				9FF8B1FA1EAB3CC100FF60FF /* PageControllerVC.swift in Sources */,
 				9F3E7CDE1EA219E600456087 /* AppDelegate.swift in Sources */,
+				9FF8B2001EAB62CB00FF60FF /* CatalogCell.swift in Sources */,
 				9FF8B1F11EAAAD0F00FF60FF /* DetailsAnimator.swift in Sources */,
 				9FF65B7F1EA9DA810061021B /* PurchaseDetailsVC.swift in Sources */,
+				9FF8B2041EAB6F4900FF60FF /* CatalogHeader.swift in Sources */,
 				9F38F39F1EA694A500418E2D /* Section.swift in Sources */,
 				9F1F4BA21EAAA1B700506282 /* AnalysisVC.swift in Sources */,
 				9F1F4B9A1EAA7F7C00506282 /* PurchaseAction.swift in Sources */,

@@ -59,23 +59,9 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7b-LX-jRo">
-                    <rect key="frame" x="15" y="20" width="56" height="44"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="bqH-rv-YeI"/>
-                    </constraints>
-                    <state key="normal" title="Browser">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="openBrowser" destination="-1" eventType="touchUpInside" id="MBp-tA-mEz"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.27843137254901962" green="0.49411764705882355" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="C7b-LX-jRo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="3dK-zi-w5n"/>
                 <constraint firstItem="30Z-V0-uym" firstAttribute="leading" secondItem="fH3-dL-3aX" secondAttribute="leading" constant="20" id="5nB-p7-Vuk"/>
                 <constraint firstAttribute="bottom" secondItem="fH3-dL-3aX" secondAttribute="bottom" id="8aP-yz-gtS"/>
                 <constraint firstItem="fH3-dL-3aX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="90V-rr-qP1"/>
@@ -83,7 +69,6 @@
                 <constraint firstAttribute="trailing" secondItem="NWn-jh-Ahf" secondAttribute="trailing" id="C8W-nN-k4w"/>
                 <constraint firstItem="CWj-GJ-FaN" firstAttribute="centerY" secondItem="fH3-dL-3aX" secondAttribute="centerY" id="HBJ-oY-m72"/>
                 <constraint firstItem="NWn-jh-Ahf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NOm-gA-6oD"/>
-                <constraint firstItem="C7b-LX-jRo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Pf8-89-l0v"/>
                 <constraint firstItem="l8g-4O-ZbJ" firstAttribute="centerY" secondItem="30Z-V0-uym" secondAttribute="centerY" id="Wbv-f5-uht"/>
                 <constraint firstItem="NWn-jh-Ahf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="c90-Dm-lZ6"/>
                 <constraint firstItem="fH3-dL-3aX" firstAttribute="top" secondItem="NWn-jh-Ahf" secondAttribute="bottom" id="e33-34-WvV"/>

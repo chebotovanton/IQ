@@ -13,7 +13,7 @@ class AnalysisVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        perform(#selector(AnalysisVC.go), with: nil, afterDelay: 2.0)
+        perform(#selector(AnalysisVC.go), with: nil, afterDelay: 5.0)
     }
 
     @objc func go() {
