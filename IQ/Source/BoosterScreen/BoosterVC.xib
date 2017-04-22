@@ -41,7 +41,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-l8-BE3">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-l8-BE3">
                             <rect key="frame" x="301" y="103" width="51" height="31"/>
                             <color key="onTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="thumbTintColor" red="0.21960784310000001" green="0.36862745099999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,7 +51,7 @@
                         </switch>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A01-Ea-RBO">
                             <rect key="frame" x="0.0" y="487" width="375" height="60"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.98039215686274506" green="0.94509803921568625" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="HWP-ha-xoD"/>
                             </constraints>
@@ -60,6 +60,27 @@
                                 <color key="titleColor" red="0.21960784310000001" green="0.36862745099999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Market goes up. Turn booster on." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJW-tt-Py4">
+                            <rect key="frame" x="50" y="34.5" width="271" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" red="0.98039215690000003" green="0.94509803920000002" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="I9O-r0-e9z">
+                            <rect key="frame" x="20" y="35" width="20" height="20"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwi-Fq-yKC">
+                            <rect key="frame" x="20" y="375.5" width="115" height="38.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ $12 today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8G-ee-hbq">
+                            <rect key="frame" x="20" y="416" width="96.5" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -69,13 +90,21 @@
                         <constraint firstAttribute="bottom" secondItem="ZeU-NQ-Tej" secondAttribute="bottom" id="CC2-1A-6YJ"/>
                         <constraint firstItem="ZeU-NQ-Tej" firstAttribute="top" secondItem="Pvq-6S-2C3" secondAttribute="top" id="ELJ-ks-fd1"/>
                         <constraint firstItem="u0A-d3-q1G" firstAttribute="top" secondItem="Pvq-6S-2C3" secondAttribute="top" constant="99" id="J9R-wf-iqQ"/>
+                        <constraint firstItem="wJW-tt-Py4" firstAttribute="leading" secondItem="I9O-r0-e9z" secondAttribute="trailing" constant="10" id="KXg-ZB-NDx"/>
+                        <constraint firstItem="A01-Ea-RBO" firstAttribute="top" secondItem="G8G-ee-hbq" secondAttribute="bottom" constant="50" id="Krf-mA-rjD"/>
+                        <constraint firstItem="wJW-tt-Py4" firstAttribute="centerY" secondItem="I9O-r0-e9z" secondAttribute="centerY" id="OGo-9h-hta"/>
                         <constraint firstAttribute="bottom" secondItem="A01-Ea-RBO" secondAttribute="bottom" id="OVM-KE-Alz"/>
                         <constraint firstItem="HW2-3b-f3y" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" constant="-10" id="Ou1-MI-nz7"/>
+                        <constraint firstItem="G8G-ee-hbq" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" constant="20" id="Qq8-Uz-Qf2"/>
                         <constraint firstAttribute="bottom" secondItem="HW2-3b-f3y" secondAttribute="bottom" constant="175" id="SXB-6e-E8q"/>
                         <constraint firstAttribute="trailing" secondItem="ZeU-NQ-Tej" secondAttribute="trailing" id="XPk-rO-sWX"/>
                         <constraint firstItem="A01-Ea-RBO" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" id="dRh-QG-roF"/>
+                        <constraint firstItem="Fwi-Fq-yKC" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" constant="20" id="dre-9y-5Oj"/>
                         <constraint firstAttribute="trailing" secondItem="nf7-l8-BE3" secondAttribute="trailing" constant="25" id="jIr-BL-VtJ"/>
                         <constraint firstItem="ZeU-NQ-Tej" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" id="n0R-wn-WQl"/>
+                        <constraint firstItem="I9O-r0-e9z" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" constant="20" id="oyN-xo-b8W"/>
+                        <constraint firstItem="G8G-ee-hbq" firstAttribute="top" secondItem="Fwi-Fq-yKC" secondAttribute="bottom" constant="2" id="tU5-ui-J0Z"/>
+                        <constraint firstItem="I9O-r0-e9z" firstAttribute="top" secondItem="Pvq-6S-2C3" secondAttribute="top" constant="35" id="u5z-Nf-Bv5"/>
                         <constraint firstItem="nf7-l8-BE3" firstAttribute="centerY" secondItem="u0A-d3-q1G" secondAttribute="centerY" id="yxU-uf-Aah"/>
                     </constraints>
                 </view>
@@ -96,5 +125,6 @@
     <resources>
         <image name="boosterBackground" width="375" height="611"/>
         <image name="boosterGraph" width="375" height="259"/>
+        <image name="infoIcon" width="20" height="20"/>
     </resources>
 </document>

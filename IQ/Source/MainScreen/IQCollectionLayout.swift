@@ -59,11 +59,10 @@ class IQCollectionLayout: UICollectionViewLayout {
                 let headerAttr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: section))
                 let headerY: CGFloat
                 if purchaseSection?.layoutStyle == .done {
-                    let offsetLim = min(yOffset, firstSectionScrollLim() + firstSectionHeight)
+                    let offsetLim = min(yOffset, firstSectionScrollLim())
                     headerY = max(offsetLim, heightSum + offsetLim)
                 } else if purchaseSection?.layoutStyle == .progress {
                     headerY = max(heightSum, yOffset)
-                    //WARNING: wrong position
                     backgroundView.frame = CGRect(x: 0, y: headerY + kHeaderHeight * 1.5, width: collectionView.frame.width, height: contentSize)
                 } else {
                     headerY = max(heightSum, yOffset)
@@ -134,7 +133,8 @@ class IQCollectionLayout: UICollectionViewLayout {
     private func queueSectionAttr(_ indexPath: IndexPath, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
         let totalSum: CGFloat = secondSectionScrollLim()
-        let y: CGFloat = max(totalSum + height * CGFloat(indexPath.item), heightSum - kHeaderHeight)
+//        let y: CGFloat = max(totalSum + height * CGFloat(indexPath.item), heightSum - kHeaderHeight)
+        let y: CGFloat = totalSum + height * CGFloat(indexPath.item)
         let attr = createAttr(y, indexPath: indexPath)
         contentSize = attr.frame.maxY
         attr.zIndex = -200
@@ -153,19 +153,25 @@ class IQCollectionLayout: UICollectionViewLayout {
     }
 
     private func firstSectionScrollLim() -> CGFloat {
-        guard let collectionView = collectionView else { return 0.0 }
-        let count = CGFloat(collectionView.numberOfItems(inSection: 0))
-        let height = kCellHeight + kBeetweenCellsSpace
-        return height + (count - 1) * kMinCollapsedCellHeight
+        return sectionHeightSum(0)
     }
 
     private func secondSectionScrollLim() -> CGFloat {
         guard let collectionView = collectionView else { return 0.0 }
-        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 0) + collectionView.numberOfItems(inSection: 1)) + 1
+
+        var result = sectionHeightSum(0)
+
+        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 1))
         let height = kCellHeight + kBeetweenCellsSpace
-        let result = height * countFloat + (countFloat - 2) * kMinCollapsedCellHeight
+        result += height * countFloat + (countFloat - 1) * kMinCollapsedCellHeight + 1400
 
         return result
     }
 
+    private func sectionHeightSum(_ section: Int) -> CGFloat {
+        guard let collectionView = collectionView else { return 0.0 }
+        let count = CGFloat(collectionView.numberOfItems(inSection: section))
+        let height = kCellHeight + kBeetweenCellsSpace
+        return height + (count - 1) * kMinCollapsedCellHeight
+    }
 }

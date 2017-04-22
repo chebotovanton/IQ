@@ -28,10 +28,5 @@ class BoosterVC: UIViewController {
     }
 
     @objc @IBAction func switchAction(sender: UISwitch) {
-//        if sender.isOn {
-//            sender.thumbTintColor = Colors.appBlueColor()
-//        } else {
-//            sender.thumbTintColor = UIColor.yellow
-//        }
     }
 }
