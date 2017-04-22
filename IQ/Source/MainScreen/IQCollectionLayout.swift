@@ -63,7 +63,8 @@ class IQCollectionLayout: UICollectionViewLayout {
                     headerY = max(offsetLim, heightSum + offsetLim)
                 } else if purchaseSection?.layoutStyle == .queue {
                     headerY = max(heightSum, yOffset)
-                    backgroundView.frame = CGRect(x: 0, y: headerY + kHeaderHeight * 1.5, width: collectionView.frame.width, height: contentSize)
+                    //WARNING: wrong position
+                    backgroundView.frame = CGRect(x: 0, y: headerY + kHeaderHeight, width: collectionView.frame.width, height: contentSize)
                 } else {
                     headerY = max(heightSum, yOffset)
                 }
@@ -157,14 +158,13 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     private func secondSectionScrollLim() -> CGFloat {
         guard let collectionView = collectionView else { return 0.0 }
-        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 0) + collectionView.numberOfItems(inSection: 0))
+        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 0))
         let height = kCellHeight + kBeetweenCellsSpace
         let result = height * countFloat + countFloat * (height - kMinCollapsedCellHeight) + CGFloat(2) * kHeaderHeight
+        // WARNING: Wrong result
+        return result
 
-//        return result
-
-        // WARNING: Weird const in code
-        return height * 10.0
+//        return height * 10.0
     }
 
 }

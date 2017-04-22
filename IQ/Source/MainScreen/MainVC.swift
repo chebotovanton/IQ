@@ -83,12 +83,15 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
 
+    private func coinsDestSection() -> Int {
+        return sections.count == 3 ? 1 : 0
+    }
+
     //MARK: - Actions
 
     @IBAction func coinAction() {
         guard let doneCollection = doneCollection else { return }
-        // WARNING: Weird coin y const
-        let coinDestY = (doneCollection.layoutAttributesForItem(at: IndexPath(item: 0, section: 1))?.frame.origin.y)! - doneCollection.contentOffset.y + 70.0
+        let coinDestY = (doneCollection.layoutAttributesForItem(at: IndexPath(item: 0, section: coinsDestSection()))?.frame.origin.y)! - doneCollection.contentOffset.y + 70.0
         for _ in 0...5 {
             let coin = UIView()
             let x = CGFloat(arc4random_uniform(300))
@@ -114,7 +117,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             animation.calculationMode = kCAAnimationPaced
             animation.fillMode = kCAFillModeForwards
             animation.path = coinPath(coin, destY: coinDestY)
-            animation.duration = 2.0
+            animation.duration = 1.0
             animation.beginTime = CACurrentMediaTime() + CFTimeInterval(0.2 * CGFloat(i))
             animation.isRemovedOnCompletion = true
             animation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
@@ -125,7 +128,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func coinPath(_ coin: UIView, destY: CGFloat) -> CGPath {
         let originPoint = coin.center
-        let destinationPoint = CGPoint(x: 50, y: destY)
+        let destinationPoint = CGPoint(x: view.frame.width / 2.0, y: destY)
         let path = sinPath(p1: originPoint, p2: destinationPoint)
 
         return path
@@ -217,19 +220,35 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             coin.removeFromSuperview()
         }
         coins = []
-        if let purchase = self.sections[1].purchases.first {
-            purchase.progress = min(1, purchase.progress + 0.25)
-            if purchase.progress == 1 {
-                self.sections[1].purchases.remove(at: 0)
-                self.sections[0].purchases.append(purchase)
-                let indexToInsert = IndexPath(item: self.sections[0].purchases.count - 1, section: 0)
-                let indexToRemove = IndexPath(item: 0, section: 1)
-                self.doneCollection.performBatchUpdates({
-                    self.doneCollection.insertItems(at: [indexToInsert])
-                    self.doneCollection.deleteItems(at: [indexToRemove])
-                }, completion: nil)
+        if let purchase = self.sections[coinsDestSection()].purchases.first {
+            purchase.progress = min(1, purchase.progress + 0.7)
+            if purchase.progress >= 1 {
+                if sections.count == 2 {
+                    self.sections[0].purchases.remove(at: 0)
+
+                    let indexToRemove = IndexPath(item: 0, section: 0)
+                    let indexSet: IndexSet = [0]
+                    self.doneCollection.performBatchUpdates({
+                        self.doneCollection.deleteItems(at: [indexToRemove])
+                    }, completion: { (finished) in
+                        self.sections.insert(Section([purchase], name: "Done", layoutStyle: .done), at: 0)
+                        self.doneCollection.performBatchUpdates({ 
+                            self.doneCollection.insertSections(indexSet)
+                        }, completion: nil)
+
+                    })
+                } else {
+                    self.sections[1].purchases.remove(at: 0)
+                    self.sections[0].purchases.append(purchase)
+                    let indexToInsert = IndexPath(item: self.sections[0].purchases.count - 1, section: 0)
+                    let indexToRemove = IndexPath(item: 0, section: 1)
+                    self.doneCollection.performBatchUpdates({
+                        self.doneCollection.insertItems(at: [indexToInsert])
+                        self.doneCollection.deleteItems(at: [indexToRemove])
+                    }, completion: nil)
+                }
             } else {
-                let indexToUpdate = IndexPath(item: 0, section: 1)
+                let indexToUpdate = IndexPath(item: 0, section: coinsDestSection())
                 if let purchaseCell = doneCollection.cellForItem(at: indexToUpdate) as? PurchaseCell {
                     purchaseCell.setup(purchase, animated: true)
                 }

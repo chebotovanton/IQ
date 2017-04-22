@@ -34,12 +34,27 @@
                         <outlet property="delegate" destination="-1" id="eex-IE-eTm"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-aH-dnj">
+                    <rect key="frame" x="20" y="20" width="79" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="GNY-9h-eXr"/>
+                    </constraints>
+                    <state key="normal" title="Coin Action">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="coinAction" destination="-1" eventType="touchUpInside" id="2u8-vV-NOj"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.27843137254901962" green="0.49411764705882355" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="NWn-jh-Ahf" secondAttribute="trailing" id="C8W-nN-k4w"/>
                 <constraint firstItem="NWn-jh-Ahf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NOm-gA-6oD"/>
                 <constraint firstItem="NWn-jh-Ahf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="c90-Dm-lZ6"/>
+                <constraint firstItem="NAu-aH-dnj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="gby-VW-3TU"/>
+                <constraint firstItem="NAu-aH-dnj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="lgV-ik-7tn"/>
                 <constraint firstAttribute="bottom" secondItem="NWn-jh-Ahf" secondAttribute="bottom" id="zoR-Hq-WPx"/>
             </constraints>
             <point key="canvasLocation" x="75.5" y="53.5"/>
