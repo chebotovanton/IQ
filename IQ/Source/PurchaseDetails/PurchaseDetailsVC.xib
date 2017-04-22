@@ -33,14 +33,26 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8k-v4-Lgu">
                     <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRC-oy-R0j">
-                            <rect key="frame" x="0.0" y="30" width="375" height="477"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRC-oy-R0j">
+                            <rect key="frame" x="0.0" y="130" width="375" height="377"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="BQ3-uD-KLe"/>
+                                <outlet property="delegate" destination="-1" id="UnW-EF-hud"/>
+                            </connections>
                         </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRQ-aw-Z7b">
+                            <rect key="frame" x="20" y="95.5" width="80.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="yRC-oy-R0j" firstAttribute="top" secondItem="CRQ-aw-Z7b" secondAttribute="bottom" constant="8" id="4tX-bW-H2c"/>
                         <constraint firstAttribute="bottom" secondItem="yRC-oy-R0j" secondAttribute="bottom" id="AEj-y9-sPz"/>
+                        <constraint firstItem="CRQ-aw-Z7b" firstAttribute="leading" secondItem="G8k-v4-Lgu" secondAttribute="leading" constant="20" id="nrj-me-WPj"/>
                         <constraint firstItem="yRC-oy-R0j" firstAttribute="leading" secondItem="G8k-v4-Lgu" secondAttribute="leading" id="tLu-cX-Csf"/>
                         <constraint firstAttribute="trailing" secondItem="yRC-oy-R0j" secondAttribute="trailing" id="tTr-uo-IbF"/>
                     </constraints>
@@ -98,7 +110,7 @@
                 <constraint firstAttribute="bottom" secondItem="G8k-v4-Lgu" secondAttribute="bottom" id="cV3-Lg-Ogv"/>
                 <constraint firstItem="AJj-q4-LuO" firstAttribute="leading" secondItem="7GK-V6-Jhz" secondAttribute="leading" constant="15" id="djJ-hg-TUE"/>
                 <constraint firstItem="AJj-q4-LuO" firstAttribute="centerY" secondItem="7GK-V6-Jhz" secondAttribute="centerY" id="dqk-1Q-Ibs"/>
-                <constraint firstItem="yRC-oy-R0j" firstAttribute="top" secondItem="7GK-V6-Jhz" secondAttribute="bottom" id="e7V-oA-rS4"/>
+                <constraint firstItem="yRC-oy-R0j" firstAttribute="top" secondItem="7GK-V6-Jhz" secondAttribute="bottom" constant="100" id="e7V-oA-rS4"/>
                 <constraint firstItem="LaY-D1-LKg" firstAttribute="trailing" secondItem="7GK-V6-Jhz" secondAttribute="trailing" constant="5" id="ePk-uK-OR7"/>
                 <constraint firstItem="G8k-v4-Lgu" firstAttribute="top" secondItem="LaY-D1-LKg" secondAttribute="top" constant="40" id="ftW-St-BIu"/>
                 <constraint firstItem="ILS-Bl-i2w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hHD-P8-fYS"/>
