@@ -237,7 +237,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     //MARK: - UIViewControllerTransitioningDelegate
 
-
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return detailsAnimator
     }
