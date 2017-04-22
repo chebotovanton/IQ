@@ -225,18 +225,14 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if purchase.progress >= 1 {
                 if sections.count == 2 {
                     self.sections[0].purchases.remove(at: 0)
+                    self.sections.insert(Section([purchase], name: "Done", layoutStyle: .done), at: 0)
 
                     let indexToRemove = IndexPath(item: 0, section: 0)
                     let indexSet: IndexSet = [0]
                     self.doneCollection.performBatchUpdates({
                         self.doneCollection.deleteItems(at: [indexToRemove])
-                    }, completion: { (finished) in
-                        self.sections.insert(Section([purchase], name: "Done", layoutStyle: .done), at: 0)
-                        self.doneCollection.performBatchUpdates({ 
-                            self.doneCollection.insertSections(indexSet)
-                        }, completion: nil)
-
-                    })
+                        self.doneCollection.insertSections(indexSet)
+                    }, completion: nil)
                 } else {
                     self.sections[1].purchases.remove(at: 0)
                     self.sections[0].purchases.append(purchase)
