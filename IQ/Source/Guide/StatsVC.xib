@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatsVC" customModule="IQ" customModuleProvider="target">
             <connections>
+                <outlet property="navBarView" destination="sba-Nv-KQo" id="78G-8b-C47"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
