@@ -11,8 +11,7 @@ import UIKit
 class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
-    @IBOutlet private weak var pageControl: UIPageControl!
-
+    
     private var sections: [Section] = []
     private let kCellIdentifier = "PurchaseCell"
     private let kHeaderIdentifier = "HeaderView"

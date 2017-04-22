@@ -8,9 +8,11 @@
 
 import UIKit
 
-class PageControllerVC: UIViewController {
+class PageControllerVC: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var contentScroll: UIScrollView!
+    @IBOutlet private weak var pageControl: UIPageControl!
+
     private var catalogVC: CatalogVC!
     private var mainVC: MainVC!
 
@@ -25,12 +27,23 @@ class PageControllerVC: UIViewController {
 
         let width = view.frame.width
         let height = contentScroll.frame.height
-        contentScroll.contentSize = CGSize(width: width * 2.0, height: height)
+        // WARNING: What's the problem with the height?
+        contentScroll.contentSize = CGSize(width: width * 2.0, height: 100)
 
         mainVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
         catalogVC.view.frame = CGRect(x: width, y: 0, width: width, height: height)
 
         contentScroll.addSubview(mainVC.view)
         contentScroll.addSubview(catalogVC.view)
+    }
+
+    // MARK: - UIScrollViewDelegate
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > view.frame.width / 2.0 {
+            pageControl.currentPage = 1
+        } else {
+            pageControl.currentPage = 0
+        }
     }
 }

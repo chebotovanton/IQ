@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageControllerVC" customModule="IQ" customModuleProvider="target">
             <connections>
                 <outlet property="contentScroll" destination="qQt-vE-5Y5" id="LqS-RY-12M"/>
+                <outlet property="pageControl" destination="pin-a2-sFY" id="epl-oe-Wky"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +21,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQt-vE-5Y5">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQt-vE-5Y5">
                     <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Wat-Ki-qhc"/>
+                    </connections>
                 </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="pin-a2-sFY">
                     <rect key="frame" x="176" y="20" width="23" height="37"/>
