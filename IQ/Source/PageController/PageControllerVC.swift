@@ -28,7 +28,7 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate {
         let width = view.frame.width
         let height = contentScroll.frame.height
         // WARNING: What's the problem with the height?
-        contentScroll.contentSize = CGSize(width: width * 2.0, height: 100)
+        contentScroll.contentSize = CGSize(width: width * 2.0, height: height)
 
         mainVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
         catalogVC.view.frame = CGRect(x: width, y: 0, width: width, height: height)
