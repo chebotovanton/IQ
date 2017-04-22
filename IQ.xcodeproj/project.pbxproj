@@ -28,6 +28,9 @@
 		9F3E7CF61EA2202D00456087 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E7CF51EA2202D00456087 /* Purchase.swift */; };
 		9F3E7CF91EA2233D00456087 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3E7CF71EA2233D00456087 /* PurchaseCell.swift */; };
 		9F3E7CFA1EA2233D00456087 /* PurchaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E7CF81EA2233D00456087 /* PurchaseCell.xib */; };
+		9F6237E81EAB87D800EC32E3 /* BoosterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6237E61EAB87D800EC32E3 /* BoosterVC.swift */; };
+		9F6237E91EAB87D800EC32E3 /* BoosterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F6237E71EAB87D800EC32E3 /* BoosterVC.xib */; };
+		9F6237EB1EAB900D00EC32E3 /* BoosterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6237EA1EAB900D00EC32E3 /* BoosterAnimator.swift */; };
 		9FF65B751EA7E4140061021B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B741EA7E4140061021B /* Images.xcassets */; };
 		9FF65B771EA7F4340061021B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF65B761EA7F4340061021B /* HeaderView.swift */; };
 		9FF65B791EA7F4410061021B /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B781EA7F4410061021B /* HeaderView.xib */; };
@@ -71,6 +74,9 @@
 		9F3E7CF51EA2202D00456087 /* Purchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		9F3E7CF71EA2233D00456087 /* PurchaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		9F3E7CF81EA2233D00456087 /* PurchaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseCell.xib; sourceTree = "<group>"; };
+		9F6237E61EAB87D800EC32E3 /* BoosterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoosterVC.swift; sourceTree = "<group>"; };
+		9F6237E71EAB87D800EC32E3 /* BoosterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoosterVC.xib; sourceTree = "<group>"; };
+		9F6237EA1EAB900D00EC32E3 /* BoosterAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoosterAnimator.swift; sourceTree = "<group>"; };
 		9FF65B741EA7E4140061021B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9FF65B761EA7F4340061021B /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		9FF65B781EA7F4410061021B /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 		9F3E7CEF1EA21B4A00456087 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				9F6237E51EAB87BF00EC32E3 /* BoosterVC */,
 				9FF8B1F71EAB3CA600FF60FF /* PageController */,
 				9FF8B1F21EAB3C5600FF60FF /* Catalog */,
 				9F1F4B9B1EAAA19300506282 /* Guide */,
@@ -207,6 +214,17 @@
 				9FF65B781EA7F4410061021B /* HeaderView.xib */,
 			);
 			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		9F6237E51EAB87BF00EC32E3 /* BoosterVC */ = {
+			isa = PBXGroup;
+			children = (
+				9F6237EA1EAB900D00EC32E3 /* BoosterAnimator.swift */,
+				9F6237E61EAB87D800EC32E3 /* BoosterVC.swift */,
+				9F6237E71EAB87D800EC32E3 /* BoosterVC.xib */,
+			);
+			name = BoosterVC;
+			path = BoosterScreen;
 			sourceTree = "<group>";
 		};
 		9FF65B7C1EA9DA530061021B /* PurchaseDetails */ = {
@@ -325,6 +343,7 @@
 				9F1F4BA71EAAA1C700506282 /* StatsVC.xib in Resources */,
 				9F3E7CFA1EA2233D00456087 /* PurchaseCell.xib in Resources */,
 				9F3E7CF41EA21B6600456087 /* MainVC.xib in Resources */,
+				9F6237E91EAB87D800EC32E3 /* BoosterVC.xib in Resources */,
 				9FF65B751EA7E4140061021B /* Images.xcassets in Resources */,
 				9F1F4B981EAA6EE500506282 /* BrowserVC.xib in Resources */,
 				9F3E7CE81EA219E600456087 /* LaunchScreen.storyboard in Resources */,
@@ -397,12 +416,14 @@
 				9FF8B1FD1EAB5D8A00FF60FF /* CatalogItem.swift in Sources */,
 				9FF8B1FA1EAB3CC100FF60FF /* PageControllerVC.swift in Sources */,
 				9F3E7CDE1EA219E600456087 /* AppDelegate.swift in Sources */,
+				9F6237EB1EAB900D00EC32E3 /* BoosterAnimator.swift in Sources */,
 				9FF8B2001EAB62CB00FF60FF /* CatalogCell.swift in Sources */,
 				9FF8B1F11EAAAD0F00FF60FF /* DetailsAnimator.swift in Sources */,
 				9FF65B7F1EA9DA810061021B /* PurchaseDetailsVC.swift in Sources */,
 				9FF8B2041EAB6F4900FF60FF /* CatalogHeader.swift in Sources */,
 				9F38F39F1EA694A500418E2D /* Section.swift in Sources */,
 				9F1F4BA21EAAA1B700506282 /* AnalysisVC.swift in Sources */,
+				9F6237E81EAB87D800EC32E3 /* BoosterVC.swift in Sources */,
 				9F1F4B9A1EAA7F7C00506282 /* PurchaseAction.swift in Sources */,
 				9F3E7CF31EA21B6600456087 /* MainVC.swift in Sources */,
 				9FF65B831EA9E1390061021B /* ProgressView.swift in Sources */,

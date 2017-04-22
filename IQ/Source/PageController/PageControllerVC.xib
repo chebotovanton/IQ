@@ -39,6 +39,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62O-cK-PKh">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                             <color key="backgroundColor" red="0.21960784310000001" green="0.36862745099999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="openBoosterScreen" destination="-1" eventType="touchUpInside" id="gFn-VR-htZ"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boosterGraphIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nwX-cw-TQb">
                             <rect key="frame" x="20" y="13" width="57" height="34"/>

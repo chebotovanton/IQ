@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BoosterVC" customModule="IQ" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="Pvq-6S-2C3" id="ea9-GY-J0a"/>
+                <outlet property="overlayView" destination="l6S-r0-g3S" id="N8V-42-D64"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6S-r0-g3S">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvq-6S-2C3">
+                    <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boosterBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ZeU-NQ-Tej">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="547"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boosterGraph" translatesAutoresizingMaskIntoConstraints="NO" id="HW2-3b-f3y">
+                            <rect key="frame" x="-10" y="113" width="395" height="259"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booster" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0A-d3-q1G">
+                            <rect key="frame" x="23" y="99" width="119" height="38.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-l8-BE3">
+                            <rect key="frame" x="301" y="103" width="51" height="31"/>
+                            <color key="onTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </switch>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A01-Ea-RBO">
+                            <rect key="frame" x="0.0" y="487" width="375" height="60"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="HWP-ha-xoD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <state key="normal" title="ADD MONEY TO BOOSTER">
+                                <color key="titleColor" red="0.21960784310000001" green="0.36862745099999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="HW2-3b-f3y" secondAttribute="trailing" constant="-10" id="2Re-qq-Nnh"/>
+                        <constraint firstItem="u0A-d3-q1G" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" constant="23" id="3bG-vA-Kqk"/>
+                        <constraint firstAttribute="trailing" secondItem="A01-Ea-RBO" secondAttribute="trailing" id="5pP-ft-eXg"/>
+                        <constraint firstAttribute="bottom" secondItem="ZeU-NQ-Tej" secondAttribute="bottom" id="CC2-1A-6YJ"/>
+                        <constraint firstItem="ZeU-NQ-Tej" firstAttribute="top" secondItem="Pvq-6S-2C3" secondAttribute="top" id="ELJ-ks-fd1"/>
+                        <constraint firstItem="u0A-d3-q1G" firstAttribute="top" secondItem="Pvq-6S-2C3" secondAttribute="top" constant="99" id="J9R-wf-iqQ"/>
+                        <constraint firstAttribute="bottom" secondItem="A01-Ea-RBO" secondAttribute="bottom" id="OVM-KE-Alz"/>
+                        <constraint firstItem="HW2-3b-f3y" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" constant="-10" id="Ou1-MI-nz7"/>
+                        <constraint firstAttribute="bottom" secondItem="HW2-3b-f3y" secondAttribute="bottom" constant="175" id="SXB-6e-E8q"/>
+                        <constraint firstAttribute="trailing" secondItem="ZeU-NQ-Tej" secondAttribute="trailing" id="XPk-rO-sWX"/>
+                        <constraint firstItem="A01-Ea-RBO" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" id="dRh-QG-roF"/>
+                        <constraint firstAttribute="trailing" secondItem="nf7-l8-BE3" secondAttribute="trailing" constant="25" id="jIr-BL-VtJ"/>
+                        <constraint firstItem="ZeU-NQ-Tej" firstAttribute="leading" secondItem="Pvq-6S-2C3" secondAttribute="leading" id="n0R-wn-WQl"/>
+                        <constraint firstItem="nf7-l8-BE3" firstAttribute="centerY" secondItem="u0A-d3-q1G" secondAttribute="centerY" id="yxU-uf-Aah"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Pvq-6S-2C3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="2t4-YR-EAh"/>
+                <constraint firstAttribute="trailing" secondItem="l6S-r0-g3S" secondAttribute="trailing" id="4hW-tw-Qgm"/>
+                <constraint firstAttribute="bottom" secondItem="l6S-r0-g3S" secondAttribute="bottom" id="FeE-pE-K6r"/>
+                <constraint firstItem="l6S-r0-g3S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FlQ-Jd-7Zi"/>
+                <constraint firstAttribute="trailing" secondItem="Pvq-6S-2C3" secondAttribute="trailing" id="GmC-JP-RLa"/>
+                <constraint firstItem="l6S-r0-g3S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LkN-vc-2ud"/>
+                <constraint firstAttribute="bottom" secondItem="Pvq-6S-2C3" secondAttribute="bottom" id="hm3-QC-sAD"/>
+                <constraint firstItem="Pvq-6S-2C3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iWj-oZ-dqj"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="boosterBackground" width="375" height="611"/>
+        <image name="boosterGraph" width="375" height="259"/>
+    </resources>
+</document>

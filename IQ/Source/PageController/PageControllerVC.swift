@@ -8,12 +8,14 @@
 
 import UIKit
 
-class PageControllerVC: UIViewController, UIScrollViewDelegate {
+class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var contentScroll: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var buttonView: UIView!
     @IBOutlet private weak var buttonViewBottom: NSLayoutConstraint!
+
+    private let boosterAnimator = BoosterAnimator()
 
     private var catalogVC: CatalogVC!
     private var mainVC: MainVC!
@@ -38,7 +40,15 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate {
         contentScroll.addSubview(catalogVC.view)
     }
 
-    
+    @IBAction func openBoosterScreen() {
+        let boosterVC = BoosterVC(nibName: "BoosterVC", bundle: nil)
+        boosterVC.definesPresentationContext = true
+        boosterVC.modalPresentationStyle = .overCurrentContext
+        boosterVC.providesPresentationContextTransitionStyle = true;
+
+        boosterVC.transitioningDelegate = self
+        present(boosterVC, animated: true, completion: nil)
+    }
 
     // MARK: - UIScrollViewDelegate
 
@@ -54,5 +64,15 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate {
         progress = max(progress, 0.0)
 
         buttonViewBottom.constant = -buttonView.frame.height * progress
+    }
+
+    //MARK: - UIViewControllerTransitioningDelegate
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return boosterAnimator
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return boosterAnimator
     }
 }
