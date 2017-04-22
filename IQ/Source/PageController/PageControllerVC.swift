@@ -15,7 +15,7 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
     @IBOutlet private weak var buttonView: UIView!
     @IBOutlet private weak var buttonViewBottom: NSLayoutConstraint!
 
-    private let boosterAnimator = BoosterAnimator()
+    private let boosterAnimator = TransitionAnimator()
 
     private var catalogVC: CatalogVC!
     private var mainVC: MainVC!
@@ -42,9 +42,7 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
 
     @IBAction func openBoosterScreen() {
         let boosterVC = BoosterVC(nibName: "BoosterVC", bundle: nil)
-        boosterVC.definesPresentationContext = true
         boosterVC.modalPresentationStyle = .overCurrentContext
-        boosterVC.providesPresentationContextTransitionStyle = true;
 
         boosterVC.transitioningDelegate = self
         present(boosterVC, animated: true, completion: nil)

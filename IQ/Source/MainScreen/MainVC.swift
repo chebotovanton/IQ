@@ -15,7 +15,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     private var sections: [Section] = []
     private let kCellIdentifier = "PurchaseCell"
     private let kHeaderIdentifier = "HeaderView"
-    private let detailsAnimator = DetailsAnimator()
+    private let detailsAnimator = TransitionAnimator()
 
     private var coins: [UIView] = []
 
