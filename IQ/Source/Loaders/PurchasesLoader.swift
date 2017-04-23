@@ -41,19 +41,7 @@ class PurchasesLoader: NSObject {
             if let dict = parsedData as? [String : Any] {
                 if let emb = dict["_embedded"] as? [String : Any] {
                     if let items = emb["items"] as? [[String : Any]] {
-                        var result: [Purchase] = []
-                        for itemDict in items {
-                            let purchaseId = itemDict["id"] as? Int ?? 0
-                            let price = itemDict["cost"] as? Int ?? 0
-                            let refund = itemDict["refunded"] as? Int ?? 0
-                            if let partnerDict = itemDict["partner"] as? [String : Any] {
-                                let name = partnerDict["name"] as? String ?? ""
-                                let iconUrlTail = partnerDict["logotypeUrl"] as? String ?? ""
-                                let iconUrl = StringUtils.kBaseUrl + iconUrlTail
-                                let purchase = Purchase(purchaseId: purchaseId, name: name, price: price, refund: refund, iconUrlString: iconUrl)
-                                result.append(purchase)
-                            }
-                        }
+                        let result: [Purchase] = ParseUtil.purchaseArray(items)
                         self.delegate?.didLoadPurchases(result)
                     }
                 }

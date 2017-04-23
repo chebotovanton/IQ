@@ -8,11 +8,13 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate, SectionsDelegate, PurchasesLoaderDelegate {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate, SectionsDelegate, PurchasesLoaderDelegate, PurchaseUpdaterDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
 
     private var loader: PurchasesLoader = PurchasesLoader()
+    private var updater: PurchaseUpdater = PurchaseUpdater()
+
     private var sections: [Section] = []
     private let kCellIdentifier = "PurchaseCell"
     private let kHeaderIdentifier = "HeaderView"
@@ -23,6 +25,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updater.delegate = self
         loader.delegate = self
         loader.loadPayments()
 
@@ -46,6 +49,11 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Actions
 
     @IBAction func coinAction() {
+//        privateCoinAction()
+        updater.updatePayments()
+    }
+
+    private func privateCoinAction(_ purchase: Purchase) {
         view.isUserInteractionEnabled = false
         guard let doneCollection = doneCollection else { return }
         let coinDestY = (doneCollection.layoutAttributesForItem(at: IndexPath(item: 0, section: coinsDestSection()))?.frame.origin.y)! - doneCollection.contentOffset.y + 70.0
@@ -232,14 +240,13 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         var progress: [Purchase] = []
         var queue: [Purchase] = []
         for purchase in purchases {
-            if purchase.progress == 0 {
-                queue.append(purchase)
-            } else if purchase.progress < 1 {
-                progress.append(purchase)
+            if purchase.status == "done" {
+                done.insert(purchase, at: 0)
+            } else if purchase.status == "in_progress" {
+                progress.insert(purchase, at: 0)
             } else {
-                done.append(purchase)
+                queue.insert(purchase, at: 0)
             }
-
         }
         sections = [
             Section(done, name: "Done", layoutStyle: .done),
@@ -252,5 +259,21 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func didFailLoadingPurchases() {
+    }
+
+    //MARK: - PurchasesLoaderDelegate
+
+    func didUpdatePurchases(_ new: [Purchase], toUpdate: [Purchase]) {
+        if let purchaseToUpdate = toUpdate.first {
+            privateCoinAction(purchaseToUpdate)
+        }
+        for newPurchase in new {
+            sections[2].purchases.insert(newPurchase, at: 0)
+        }
+
+        doneCollection.reloadData()
+    }
+
+    func didFailUpdating() {
     }
 }

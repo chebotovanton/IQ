@@ -44,12 +44,16 @@ class PurchaseUpdater: NSObject {
                         var new: [Purchase] = []
                         var toUpdate: [Purchase] = []
                         if let newArray = items["new"] as? [[String : Any]] {
-                            new = purchaseArray(newArray)
+                            new = ParseUtil.purchaseArray(newArray)
+                            notifyServer(new)
                         }
                         if let toUpdateArray = items["cashBackTo"] as? [[String : Any]] {
-                            toUpdate = purchaseArray(toUpdateArray)
+                            toUpdate = ParseUtil.purchaseArray(toUpdateArray)
+                            notifyServer(toUpdate)
                         }
-                        self.delegate?.didUpdatePurchases(new, toUpdate: toUpdate)
+                        DispatchQueue.main.async(execute: {
+                            self.delegate?.didUpdatePurchases(new, toUpdate: toUpdate)
+                        })
                     }
                 }
             }
@@ -60,29 +64,27 @@ class PurchaseUpdater: NSObject {
         }
     }
 
-    private func purchaseArray(_ array: [[String : Any]]) -> [Purchase] {
-        var result: [Purchase] = []
-        for dict in array {
-            if let purchase = purchase(dict) {
-                result.append(purchase)
+    private func notifyServer(_ purchaseArray: [Purchase]) {
+        for purchase in purchaseArray {
+            func updatePayments() {
+                let urlString = StringUtils.kBaseUrl + "/api/payments-recent" + String(purchase.purchaseId)
+                let url = URL(string: urlString)!
+                var request = URLRequest(url: url)
+                request.httpMethod = "PATCH"
+                request.setValue(StringUtils.kAuthKey, forHTTPHeaderField: "Authorization")
+                request.timeoutInterval = 15
+
+                let dict = ["isShown" : true]
+                do {
+                    let data = try JSONSerialization.data(withJSONObject: dict, options: [])
+                    request.httpBody = data
+
+                    let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+                    })
+                    task.resume()
+                }
+                catch {}
             }
         }
-
-        return result
-    }
-
-    private func purchase(_ dict: [String : Any]) -> Purchase? {
-        let purchaseId = dict["id"] as? Int ?? 0
-        let price = dict["cost"] as? Int ?? 0
-        let refund = dict["refunded"] as? Int ?? 0
-        if let partnerDict = dict["partner"] as? [String : Any] {
-            let name = partnerDict["name"] as? String ?? ""
-            let iconUrlTail = partnerDict["logotypeUrl"] as? String ?? ""
-            let iconUrl = StringUtils.kBaseUrl + iconUrlTail
-            let purchase = Purchase(purchaseId: purchaseId, name: name, price: price, refund: refund, iconUrlString: iconUrl)
-            return purchase
-        }
-
-        return nil
     }
 }

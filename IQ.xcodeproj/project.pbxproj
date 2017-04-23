@@ -39,6 +39,7 @@
 		9F6237FC1EAC315200EC32E3 /* HowItWorks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F6237FA1EAC315200EC32E3 /* HowItWorks.xib */; };
 		9F68C2981EAC9F3B006485F6 /* BoosterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F68C2971EAC9F3B006485F6 /* BoosterLoader.swift */; };
 		9F68C29A1EACCBC3006485F6 /* PurchaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F68C2991EACCBC3006485F6 /* PurchaseUpdater.swift */; };
+		9F68C29C1EACDAF7006485F6 /* ParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F68C29B1EACDAF7006485F6 /* ParseUtil.swift */; };
 		9FF65B751EA7E4140061021B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B741EA7E4140061021B /* Images.xcassets */; };
 		9FF65B771EA7F4340061021B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF65B761EA7F4340061021B /* HeaderView.swift */; };
 		9FF65B791EA7F4410061021B /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF65B781EA7F4410061021B /* HeaderView.xib */; };
@@ -92,6 +93,7 @@
 		9F6237FA1EAC315200EC32E3 /* HowItWorks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HowItWorks.xib; sourceTree = "<group>"; };
 		9F68C2971EAC9F3B006485F6 /* BoosterLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoosterLoader.swift; sourceTree = "<group>"; };
 		9F68C2991EACCBC3006485F6 /* PurchaseUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseUpdater.swift; sourceTree = "<group>"; };
+		9F68C29B1EACDAF7006485F6 /* ParseUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseUtil.swift; sourceTree = "<group>"; };
 		9FF65B741EA7E4140061021B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9FF65B761EA7F4340061021B /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		9FF65B781EA7F4410061021B /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		9F6237F41EAC20D700EC32E3 /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
+				9F68C29B1EACDAF7006485F6 /* ParseUtil.swift */,
 				9F6237F51EAC20F000EC32E3 /* PartnersLoader.swift */,
 				9F6237F71EAC210600EC32E3 /* PurchasesLoader.swift */,
 				9F68C2971EAC9F3B006485F6 /* BoosterLoader.swift */,
@@ -441,6 +444,7 @@
 				9F1F4BA61EAAA1C700506282 /* StatsVC.swift in Sources */,
 				9F38F39D1EA65DA400418E2D /* IQCollectionLayout.swift in Sources */,
 				9FF65B7B1EA970470061021B /* Colors.swift in Sources */,
+				9F68C29C1EACDAF7006485F6 /* ParseUtil.swift in Sources */,
 				9F6237F81EAC210600EC32E3 /* PurchasesLoader.swift in Sources */,
 				9F1F4B9E1EAAA1A500506282 /* LoginVC.swift in Sources */,
 				9F3E7CF91EA2233D00456087 /* PurchaseCell.swift in Sources */,
