@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3d-MP-jdZ">
-                    <rect key="frame" x="248" y="20" width="107" height="39"/>
+                    <rect key="frame" x="248" y="25" width="107" height="39"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                     <state key="normal" title="OK. Got it."/>
                     <connections>
@@ -39,7 +39,7 @@
                 <constraint firstAttribute="trailing" secondItem="v3d-MP-jdZ" secondAttribute="trailing" constant="20" id="X6J-JB-AUL"/>
                 <constraint firstAttribute="trailing" secondItem="dK9-8d-g6f" secondAttribute="trailing" id="qGl-S1-eb7"/>
                 <constraint firstItem="dK9-8d-g6f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sxx-cC-I2x"/>
-                <constraint firstItem="v3d-MP-jdZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="vWV-88-Zil"/>
+                <constraint firstItem="v3d-MP-jdZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="vWV-88-Zil"/>
             </constraints>
         </view>
     </objects>
