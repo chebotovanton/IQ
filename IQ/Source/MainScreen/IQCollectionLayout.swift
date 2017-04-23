@@ -132,9 +132,12 @@ class IQCollectionLayout: UICollectionViewLayout {
 
     private func queueSectionAttr(_ indexPath: IndexPath, offset: CGFloat, heightSum: CGFloat) -> UICollectionViewLayoutAttributes {
         let height = kCellHeight + kBeetweenCellsSpace
-        let totalSum: CGFloat = secondSectionScrollLim()
-//        let y: CGFloat = max(totalSum + height * CGFloat(indexPath.item), heightSum - kHeaderHeight)
-        let y: CGFloat = totalSum + height * CGFloat(indexPath.item)
+        var y: CGFloat = 0
+        y = max(heightSum, offset)
+        y = min(y, secondSectionScrollLim())
+        y = y + CGFloat(indexPath.item) * height
+        y = max(y, heightSum - kHeaderHeight)
+
         let attr = createAttr(y, indexPath: indexPath)
         contentSize = attr.frame.maxY
         attr.zIndex = -200
@@ -159,11 +162,12 @@ class IQCollectionLayout: UICollectionViewLayout {
     private func secondSectionScrollLim() -> CGFloat {
         guard let collectionView = collectionView else { return 0.0 }
 
-        var result = sectionHeightSum(0)
-
-        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 1))
         let height = kCellHeight + kBeetweenCellsSpace
-        result += height * countFloat + (countFloat - 1) * kMinCollapsedCellHeight + 1400
+        var result:CGFloat = 0
+        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 1) + collectionView.numberOfItems(inSection: 0))
+        result = result + countFloat * height
+        result = result + 3.0 * kHeaderHeight
+        result = result + (countFloat - 2.0) * kMinCollapsedCellHeight
 
         return result
     }
