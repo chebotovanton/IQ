@@ -47,7 +47,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     private func createFakeDoneItems() -> [Purchase] {
         var result: [Purchase] = []
-        for i in 0..<3 {
+        for i in 0..<1 {
             result.append(Purchase(name: "Done " + String(i), progress: 1))
         }
         setFakeIcons(result)

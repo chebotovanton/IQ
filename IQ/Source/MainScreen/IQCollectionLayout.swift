@@ -164,10 +164,25 @@ class IQCollectionLayout: UICollectionViewLayout {
 
         let height = kCellHeight + kBeetweenCellsSpace
         var result:CGFloat = 0
-        let countFloat = CGFloat(collectionView.numberOfItems(inSection: 1) + collectionView.numberOfItems(inSection: 0))
-        result = result + countFloat * height
+
+        var count: CGFloat = 0
+        var collapsedCount: CGFloat = 0
+
+        let doneCount = collectionView.numberOfItems(inSection: 0)
+        count = count + CGFloat(doneCount)
+        if doneCount > 1 {
+            collapsedCount += CGFloat(doneCount - 1)
+        }
+
+        let progressCount = collectionView.numberOfItems(inSection: 1)
+        count = count + CGFloat(progressCount)
+        if progressCount > 1 {
+            collapsedCount += CGFloat(progressCount - 1)
+        }
+
+        result = result + count * height
         result = result + 3.0 * kHeaderHeight
-        result = result + (countFloat - 2.0) * kMinCollapsedCellHeight
+        result = result + collapsedCount * kMinCollapsedCellHeight
 
         return result
     }
