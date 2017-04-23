@@ -20,6 +20,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     private let kHeaderIdentifier = "HeaderView"
     private let detailsAnimator = TransitionAnimator()
 
+    private var purchaseToMoveToDone: Purchase?
+
     private var coins: [UIView] = []
 
     override func viewDidLoad() {
@@ -196,7 +198,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         coins = []
         if let purchase = self.sections[coinsDestSection()].purchases.first {
-            if purchase.progress >= 1 {
+            if let purchaseToMoveToDone = purchaseToMoveToDone {
                 if sections.count == 2 {
                     self.sections[0].purchases.remove(at: 0)
                     self.sections.insert(Section([purchase], name: "Done", layoutStyle: .done), at: 0)
@@ -208,7 +210,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                     }, completion: nil)
                 } else {
                     self.sections[1].purchases.remove(at: 0)
-                    self.sections[0].purchases.append(purchase)
+                    self.sections[0].purchases.append(purchaseToMoveToDone)
                     let indexToInsert = IndexPath(item: self.sections[0].purchases.count - 1, section: 0)
                     let indexToRemove = IndexPath(item: 0, section: 1)
                     self.doneCollection.performBatchUpdates({
@@ -216,6 +218,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                         self.doneCollection.deleteItems(at: [indexToRemove])
                     }, completion: nil)
                 }
+                self.purchaseToMoveToDone = nil
             } else {
                 let indexToUpdate = IndexPath(item: 0, section: coinsDestSection())
                 if let purchaseCell = doneCollection.cellForItem(at: indexToUpdate) as? PurchaseCell {
@@ -272,7 +275,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - PurchaseUpdaterDelegate
 
     func didUpdatePurchases(_ new: [Purchase], toUpdate: [Purchase], done: [Purchase]) {
-        if new.count == 0 && toUpdate.count == 0 {
+        if new.count == 0 && toUpdate.count == 0, done.count == 0 {
             let time = DispatchTime.now() + 5.0
             DispatchQueue.main.asyncAfter(deadline: time) {
                 self.requestPurchaseUpdate()
@@ -281,16 +284,20 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             return
         }
 
-        if let purchaseToUpdate = toUpdate.first {
-            sections[1].purchases.remove(at: 0)
-            sections[1].purchases.insert(purchaseToUpdate, at: 0)
-            privateCoinAction(purchaseToUpdate)
+//        for newPurchase in new {
+//            sections[2].purchases.insert(newPurchase, at: 0)
+//        }
+//        doneCollection.reloadData()
+//        doneCollection.collectionViewLayout.invalidateLayout()
 
+        if let donePurchase = done.first {
+            purchaseToMoveToDone = donePurchase
+            privateCoinAction(donePurchase)
+        } else if let purchaseToUpdate = toUpdate.first {
+            privateCoinAction(purchaseToUpdate)
+            sections[1].purchases[0].refund = purchaseToUpdate.refund
+            sections[1].purchases[0].progress = purchaseToUpdate.progress
         }
-        for newPurchase in new {
-            sections[2].purchases.insert(newPurchase, at: 0)
-        }
-        doneCollection.reloadData()
     }
 
     func didFailUpdating() {

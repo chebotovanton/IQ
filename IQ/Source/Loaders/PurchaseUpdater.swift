@@ -77,7 +77,6 @@ class PurchaseUpdater: NSObject {
     private func notifyServer(_ purchaseArray: [Purchase]) {
         for purchase in purchaseArray {
             let urlString = StringUtils.kBaseUrl + "/api/payments/" + String(purchase.purchaseId)
-            NSLog(urlString)
             let url = URL(string: urlString)!
             var request = URLRequest(url: url)
             request.httpMethod = "PATCH"
