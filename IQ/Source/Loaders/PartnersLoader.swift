@@ -20,7 +20,7 @@ class PartnersLoader: NSObject {
         let urlString = StringUtils.kBaseUrl + "/api/partners"
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
-        request.setValue("Authorization", forHTTPHeaderField: StringUtils.kAuthKey)
+        request.setValue(StringUtils.kAuthKey, forHTTPHeaderField: "Authorization")
         request.timeoutInterval = 15
 
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in

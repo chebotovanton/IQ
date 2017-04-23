@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate, SectionsDelegate {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CAAnimationDelegate, UIViewControllerTransitioningDelegate, SectionsDelegate, PurchasesLoaderDelegate {
 
     @IBOutlet private weak var doneCollection: UICollectionView!
-    
+
+    private var loader: PurchasesLoader = PurchasesLoader()
     private var sections: [Section] = []
     private let kCellIdentifier = "PurchaseCell"
     private let kHeaderIdentifier = "HeaderView"
@@ -21,6 +22,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loader.delegate = self
+        loader.loadPayments()
 
         let nib = UINib(nibName: kCellIdentifier, bundle: nil)
         doneCollection.register(nib, forCellWithReuseIdentifier: kCellIdentifier)
@@ -32,56 +36,56 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         doneCollection.collectionViewLayout = doneLayout
         doneCollection.alwaysBounceVertical = true
 
-        sections = createSections()
+//        sections = createSections()
     }
 
     //MARK: - Private
 
-    private func createSections() -> [Section] {
-        return [
-                Section(createFakeDoneItems(), name: "Done", layoutStyle: .done),
-                Section(createFakeProgressItems(), name: "In Progress", layoutStyle: .progress),
-                Section(createFakeQueueItems(), name: "In queue", layoutStyle: .queue)
-        ]
-    }
+//    private func createSections() -> [Section] {
+//        return [
+//                Section(createFakeDoneItems(), name: "Done", layoutStyle: .done),
+//                Section(createFakeProgressItems(), name: "In Progress", layoutStyle: .progress),
+//                Section(createFakeQueueItems(), name: "In queue", layoutStyle: .queue)
+//        ]
+//    }
 
-    private func createFakeDoneItems() -> [Purchase] {
-        var result: [Purchase] = []
-        for i in 0..<1 {
-            result.append(Purchase(name: "Done " + String(i), progress: 1))
-        }
-        setFakeIcons(result)
+//    private func createFakeDoneItems() -> [Purchase] {
+//        var result: [Purchase] = []
+//        for i in 0..<1 {
+//            result.append(Purchase(name: "Done " + String(i), progress: 1))
+//        }
+//        setFakeIcons(result)
+//
+//        return result
+//    }
+//
+//    private func createFakeProgressItems() -> [Purchase] {
+//        var result: [Purchase] = []
+//        for i in 0..<3 {
+//            result.append(Purchase(name: "In progress " + String(i), progress: 0.1))
+//        }
+//        setFakeIcons(result)
+//
+//        return result
+//    }
+//
+//    private func createFakeQueueItems() -> [Purchase] {
+//        var result: [Purchase] = []
+//        for i in 0...6 {
+//            result.append(Purchase(name: "In queue " + String(i), progress: 0))
+//        }
+//        setFakeIcons(result)
+//
+//        return result
+//    }
 
-        return result
-    }
-
-    private func createFakeProgressItems() -> [Purchase] {
-        var result: [Purchase] = []
-        for i in 0..<3 {
-            result.append(Purchase(name: "In progress " + String(i), progress: 0.1))
-        }
-        setFakeIcons(result)
-
-        return result
-    }
-
-    private func createFakeQueueItems() -> [Purchase] {
-        var result: [Purchase] = []
-        for i in 0...6 {
-            result.append(Purchase(name: "In queue " + String(i), progress: 0))
-        }
-        setFakeIcons(result)
-
-        return result
-    }
-
-    private func setFakeIcons(_ items: [Purchase]) {
-        for i in 0..<items.count {
-            let purchase = items[i]
-            let iconName = "logo" + String(i)
-            purchase.icon = UIImage(named: iconName)
-        }
-    }
+//    private func setFakeIcons(_ items: [Purchase]) {
+//        for i in 0..<items.count {
+//            let purchase = items[i]
+//            let iconName = "logo" + String(i)
+//            purchase.icon = UIImage(named: iconName)
+//        }
+//    }
 
     private func coinsDestSection() -> Int {
         return sections.count == 3 ? 1 : 0
@@ -267,4 +271,30 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         return sections[index]
     }
 
+    //MARK: - PurchasesLoaderDelegate
+
+    func didLoadPurchases(_ purchases: [Purchase]) {
+        var done: [Purchase] = []
+        var progress: [Purchase] = []
+        var queue: [Purchase] = []
+        for purchase in purchases {
+            if purchase.progress == 0 {
+                queue.append(purchase)
+            } else if purchase.progress < 1 {
+                progress.append(purchase)
+            } else {
+                done.append(purchase)
+            }
+
+        }
+        sections = [
+            Section(done, name: "Done", layoutStyle: .done),
+            Section(progress, name: "In Progress", layoutStyle: .progress),
+            Section(queue, name: "In Queue", layoutStyle: .queue)
+        ]
+        doneCollection.reloadData()
+    }
+
+    func didFailLoadingPurchases() {
+    }
 }

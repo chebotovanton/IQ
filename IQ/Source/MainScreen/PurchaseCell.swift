@@ -19,7 +19,8 @@ class PurchaseCell: UICollectionViewCell {
     func setup(_ purchase: Purchase, animated: Bool = false) {
         nameLabel.text = purchase.name
         priceLabel.text = StringUtils.priceText(purchase.price, progress: purchase.progress)
-        iconView.image = purchase.icon
+        let url = URL(string: purchase.iconUrlString)
+        iconView.sd_setImage(with: url)
         progressView.setup(purchase.progress, animated: animated)
     }
 }

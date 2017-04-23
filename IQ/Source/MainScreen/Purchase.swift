@@ -10,14 +10,21 @@ import UIKit
 
 class Purchase: NSObject {
 
-    var progress: CGFloat
     var name: String
-    var price: Int = 450
-    var icon: UIImage?
+    var price: Int
+    var refund: Int
+    var iconUrlString: String
+    var progress: CGFloat = 0
 
-    init(name: String, progress: CGFloat) {
+    init(name: String, price: Int, refund: Int, iconUrlString: String) {
         self.name = name
-        self.progress = progress
+        self.price = price
+        self.refund = refund
+        self.iconUrlString = iconUrlString
+
+        if price > 0 {
+            self.progress = CGFloat(refund) / CGFloat(price)
+        }
     }
 
 }
