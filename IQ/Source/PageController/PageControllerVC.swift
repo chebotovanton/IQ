@@ -59,7 +59,6 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
 
     func reloadBoosterValue() {
         boosterLoader.loadBoosterValue()
-//        boosterLabel.text = "Your Booster " + StringUtils.boosterValue()
         let time = DispatchTime.now() + 3.0
         DispatchQueue.main.asyncAfter(deadline: time) { 
             self.reloadBoosterValue()

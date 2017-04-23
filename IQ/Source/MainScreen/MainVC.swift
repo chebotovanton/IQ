@@ -53,8 +53,13 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Actions
 
     @IBAction func coinAction() {
-        let purchase = sections[1].purchases[0]
-        privateCoinAction(purchase)
+        if sections.count > 0 {
+            let section = sections[1]
+            if section.purchases.count > 0 {
+                let purchase = section.purchases[0]
+                privateCoinAction(purchase)
+            }
+        }
     }
 
     private func privateCoinAction(_ purchase: Purchase) {
@@ -191,7 +196,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         coins = []
         if let purchase = self.sections[coinsDestSection()].purchases.first {
-            purchase.progress = min(1, purchase.progress + 0.2)
             if purchase.progress >= 1 {
                 if sections.count == 2 {
                     self.sections[0].purchases.remove(at: 0)
@@ -265,16 +269,27 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func didFailLoadingPurchases() {
     }
 
-    //MARK: - PurchasesLoaderDelegate
+    //MARK: - PurchaseUpdaterDelegate
 
-    func didUpdatePurchases(_ new: [Purchase], toUpdate: [Purchase]) {
+    func didUpdatePurchases(_ new: [Purchase], toUpdate: [Purchase], done: [Purchase]) {
+        if new.count == 0 && toUpdate.count == 0 {
+            let time = DispatchTime.now() + 5.0
+            DispatchQueue.main.asyncAfter(deadline: time) {
+                self.requestPurchaseUpdate()
+            }
+
+            return
+        }
+
         if let purchaseToUpdate = toUpdate.first {
+            sections[1].purchases.remove(at: 0)
+            sections[1].purchases.insert(purchaseToUpdate, at: 0)
             privateCoinAction(purchaseToUpdate)
+
         }
         for newPurchase in new {
             sections[2].purchases.insert(newPurchase, at: 0)
         }
-
         doneCollection.reloadData()
     }
 
