@@ -19,7 +19,7 @@ class CatalogCell: UICollectionViewCell {
 
     func setup(_ catalogItem: CatalogItem) {
         nameLabel.text = catalogItem.name
-        priceLabel.text = catalogItem.price
+        priceLabel.text = "Cashback " + String(catalogItem.discount) + "%"
         let url = URL(string: catalogItem.iconUrl)
         imageView.sd_setImage(with: url)
     }
