@@ -47,6 +47,10 @@ class ProgressView: UIView {
         if progress == 1 {
             backgroundColor = Colors.progressColor()
         } else if progress > 0 {
+            addSubview(fillView)
+            for stripe in stripeViews {
+                addSubview(stripe)
+            }
             backgroundColor = UIColor.white
             let width = frame.width * progress
             if !animated {
@@ -61,6 +65,10 @@ class ProgressView: UIView {
                 animateFillView(fillView, width: width)
             }
         } else {
+            fillView.removeFromSuperview()
+            for stripe in stripeViews {
+                stripe.removeFromSuperview()
+            }
             backgroundColor = UIColor.white
         }
     }
