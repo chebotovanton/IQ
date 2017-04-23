@@ -17,6 +17,7 @@ class BoosterVC: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var refillViewTop: NSLayoutConstraint!
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var boosterLabel: UILabel!
+    @IBOutlet private weak var percentLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class BoosterVC: UIViewController, UITextFieldDelegate {
         overlayView.addGestureRecognizer(rec)
 
         boosterSwitch.onTintColor = Colors.progressColor()
+        updatePercentLabel()
 
         boosterLabel.text = StringUtils.boosterValue()
 
@@ -32,11 +34,16 @@ class BoosterVC: UIViewController, UITextFieldDelegate {
         hideRefillView()
     }
 
+    private func updatePercentLabel() {
+        percentLabel.isHidden = !boosterSwitch.isOn
+    }
+
     @objc func hide() {
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func switchAction(sender: UISwitch) {
+        updatePercentLabel()
     }
 
     @IBAction func showRefillView() {

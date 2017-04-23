@@ -10,13 +10,15 @@ import UIKit
 
 class Purchase: NSObject {
 
+    var purchaseId: Int
     var name: String
     var price: Int
     var refund: Int
     var iconUrlString: String
     var progress: CGFloat = 0
 
-    init(name: String, price: Int, refund: Int, iconUrlString: String) {
+    init(purchaseId: Int, name: String, price: Int, refund: Int, iconUrlString: String) {
+        self.purchaseId = purchaseId
         self.name = name
         self.price = price
         self.refund = refund
