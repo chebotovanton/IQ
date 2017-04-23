@@ -64,5 +64,4 @@ class PurchasesLoader: NSObject {
             delegate?.didFailLoadingPurchases()
         }
     }
-
 }

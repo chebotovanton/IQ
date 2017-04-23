@@ -35,57 +35,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         doneLayout.sectionsDelegate = self
         doneCollection.collectionViewLayout = doneLayout
         doneCollection.alwaysBounceVertical = true
-
-//        sections = createSections()
     }
 
     //MARK: - Private
-
-//    private func createSections() -> [Section] {
-//        return [
-//                Section(createFakeDoneItems(), name: "Done", layoutStyle: .done),
-//                Section(createFakeProgressItems(), name: "In Progress", layoutStyle: .progress),
-//                Section(createFakeQueueItems(), name: "In queue", layoutStyle: .queue)
-//        ]
-//    }
-
-//    private func createFakeDoneItems() -> [Purchase] {
-//        var result: [Purchase] = []
-//        for i in 0..<1 {
-//            result.append(Purchase(name: "Done " + String(i), progress: 1))
-//        }
-//        setFakeIcons(result)
-//
-//        return result
-//    }
-//
-//    private func createFakeProgressItems() -> [Purchase] {
-//        var result: [Purchase] = []
-//        for i in 0..<3 {
-//            result.append(Purchase(name: "In progress " + String(i), progress: 0.1))
-//        }
-//        setFakeIcons(result)
-//
-//        return result
-//    }
-//
-//    private func createFakeQueueItems() -> [Purchase] {
-//        var result: [Purchase] = []
-//        for i in 0...6 {
-//            result.append(Purchase(name: "In queue " + String(i), progress: 0))
-//        }
-//        setFakeIcons(result)
-//
-//        return result
-//    }
-
-//    private func setFakeIcons(_ items: [Purchase]) {
-//        for i in 0..<items.count {
-//            let purchase = items[i]
-//            let iconName = "logo" + String(i)
-//            purchase.icon = UIImage(named: iconName)
-//        }
-//    }
 
     private func coinsDestSection() -> Int {
         return sections.count == 3 ? 1 : 0
@@ -227,7 +179,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         coins = []
         if let purchase = self.sections[coinsDestSection()].purchases.first {
-            purchase.progress = min(1, purchase.progress + 0.7)
+            purchase.progress = min(1, purchase.progress + 0.2)
             if purchase.progress >= 1 {
                 if sections.count == 2 {
                     self.sections[0].purchases.remove(at: 0)
