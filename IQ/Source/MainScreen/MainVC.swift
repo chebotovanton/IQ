@@ -40,6 +40,10 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         doneCollection.alwaysBounceVertical = true
     }
 
+    func requestPurchaseUpdate() {
+        updater.updatePayments()
+    }
+
     //MARK: - Private
 
     private func coinsDestSection() -> Int {
@@ -49,8 +53,8 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Actions
 
     @IBAction func coinAction() {
-//        privateCoinAction()
-        updater.updatePayments()
+        let purchase = sections[1].purchases[0]
+        privateCoinAction(purchase)
     }
 
     private func privateCoinAction(_ purchase: Purchase) {

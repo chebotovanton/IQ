@@ -72,6 +72,9 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
         if scrollView.contentOffset.x > view.frame.width / 2.0 {
             pageControl.currentPage = 1
         } else {
+            if pageControl.currentPage > 0 {
+                mainVC.requestPurchaseUpdate()
+            }
             pageControl.currentPage = 0
         }
 
