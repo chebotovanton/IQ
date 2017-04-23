@@ -94,6 +94,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - Actions
 
     @IBAction func coinAction() {
+        view.isUserInteractionEnabled = false
         guard let doneCollection = doneCollection else { return }
         let coinDestY = (doneCollection.layoutAttributesForItem(at: IndexPath(item: 0, section: coinsDestSection()))?.frame.origin.y)! - doneCollection.contentOffset.y + 70.0
         for _ in 0...10 {
@@ -121,7 +122,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             animation.calculationMode = kCAAnimationPaced
             animation.fillMode = kCAFillModeForwards
             animation.path = coinPath(coin, destY: coinDestY)
-            animation.duration = 1.0
+            animation.duration = 2.0
             animation.beginTime = CACurrentMediaTime() + CFTimeInterval(0.2 * CGFloat(i))
             animation.isRemovedOnCompletion = true
             animation.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
@@ -219,6 +220,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: - CAAnimationDelegate
 
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        view.isUserInteractionEnabled = true
         for coin in self.coins {
             coin.layer.removeAllAnimations()
             coin.removeFromSuperview()
