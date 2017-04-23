@@ -12,6 +12,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var cardField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
 
     override func viewDidLoad() {
@@ -29,8 +30,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     // MARk: - UITextFieldDelegate
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == loginField {
+        if textField == loginField  {
             passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            cardField.becomeFirstResponder()
         } else {
             go()
         }
