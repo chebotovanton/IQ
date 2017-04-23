@@ -8,17 +8,22 @@
 
 import UIKit
 
-class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PartnersLoaderDelegate {
 
     private let kCellIdentifier = "CatalogCell"
     private let kHeaderIdentifier = "CatalogHeader"
     private var items: [CatalogItem] = []
     @IBOutlet private weak var offersCollection: UICollectionView!
 
+    private var loader = PartnersLoader()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        items = createFakeItems()
+        loader.delegate = self
+        loader.loadPartners()
+
+//        items = createFakeItems()
         offersCollection.register(UINib(nibName: kCellIdentifier, bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
 
         let headerNib = UINib(nibName: kHeaderIdentifier, bundle: nil)
@@ -26,25 +31,25 @@ class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
     }
 
-    private func createFakeItems() -> [CatalogItem] {
-        var result: [CatalogItem] = []
-
-        result.append(CatalogItem(name: "Timberland", price: "$179.95", icon: UIImage(named: "timberland")!, urlString: "https://www.groupon.com/deals/gs-timberland-men-s-waterproof-6-inch-classic-boot"))
-
-        result.append(CatalogItem(name: "Ray-Ban Classic", price: "$150, CashBack $70", icon: UIImage(named: "rayban")!, urlString: "https://www.groupon.com/deals/gs-ray-ban-classic-clubmaster-for-women-and-men"))
-
-        result.append(CatalogItem(name: "Xbox One 500GB", price: "$325, CashBack $105", icon: UIImage(named: "xbox")!, urlString: "https://www.groupon.com/deals/gg-xbox-one-with-forza-5-game"))
-
-        result.append(CatalogItem(name: "NHL Wine Glasses", price: "$35, CashBack 40%", icon: UIImage(named: "nhl")!, urlString: "https://www.groupon.com/deals/gg-nhl-wine-glasses-2-pack"))
-
-        result.append(CatalogItem(name: "15 Bottles of Wine", price: "$340, CashBack 81%", icon: UIImage(named: "wine")!, urlString: "https://www.groupon.com/deals/gg-wine-insiders-15-bottles-of-wine"))
-
-        let icon = UIImage(named: "nike")!
-        let urlString = "https://afisha.yandex.ru/saint-petersburg/cinema?preset=today"
-            result.append(CatalogItem(name: "NIKE N-95", price: "$240, CashBack 40%", icon: icon, urlString: urlString))
-
-        return result
-    }
+//    private func createFakeItems() -> [CatalogItem] {
+//        var result: [CatalogItem] = []
+//
+//        result.append(CatalogItem(name: "Timberland", price: "$179.95", icon: UIImage(named: "timberland")!, urlString: "https://www.groupon.com/deals/gs-timberland-men-s-waterproof-6-inch-classic-boot"))
+//
+//        result.append(CatalogItem(name: "Ray-Ban Classic", price: "$150, CashBack $70", icon: UIImage(named: "rayban")!, urlString: "https://www.groupon.com/deals/gs-ray-ban-classic-clubmaster-for-women-and-men"))
+//
+//        result.append(CatalogItem(name: "Xbox One 500GB", price: "$325, CashBack $105", icon: UIImage(named: "xbox")!, urlString: "https://www.groupon.com/deals/gg-xbox-one-with-forza-5-game"))
+//
+//        result.append(CatalogItem(name: "NHL Wine Glasses", price: "$35, CashBack 40%", icon: UIImage(named: "nhl")!, urlString: "https://www.groupon.com/deals/gg-nhl-wine-glasses-2-pack"))
+//
+//        result.append(CatalogItem(name: "15 Bottles of Wine", price: "$340, CashBack 81%", icon: UIImage(named: "wine")!, urlString: "https://www.groupon.com/deals/gg-wine-insiders-15-bottles-of-wine"))
+//
+//        let icon = UIImage(named: "nike")!
+//        let urlString = "https://afisha.yandex.ru/saint-petersburg/cinema?preset=today"
+//            result.append(CatalogItem(name: "NIKE N-95", price: "$240, CashBack 40%", icon: icon, urlString: urlString))
+//
+//        return result
+//    }
 
     //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
@@ -83,6 +88,14 @@ class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         return view
     }
 
-    
+    //MARK: - PartnersLoaderDelegate
+    func didLoadPartners(_ partners: [CatalogItem]) {
+        items = partners
+        offersCollection.reloadData()
+    }
+
+    func didFailLoadingPartners() {
+
+    }
 
 }

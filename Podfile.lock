@@ -1,12 +1,14 @@
 PODS:
-  - HFCardCollectionViewLayout (0.4.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
-  - HFCardCollectionViewLayout
+  - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
-  HFCardCollectionViewLayout: 88cc7deb86baae9396450d9db323081cce50da59
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 1b868c6437817e9905741118958c4bbd836e351e
+PODFILE CHECKSUM: 58859c58d108731140269078dc7216d5a59b2325
 
 COCOAPODS: 1.2.0

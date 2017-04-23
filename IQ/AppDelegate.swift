@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = UINavigationController(rootViewController: pageControllerVC)
         window?.rootViewController = navVC
         navVC.setNavigationBarHidden(true, animated: false)
+
+        let partnersLoader = PartnersLoader()
+        partnersLoader.loadPartners()
 
 //        let loginVC = LoginVC(nibName: "LoginVC", bundle: nil)
 //        let guideNavVC = UINavigationController(rootViewController: loginVC)

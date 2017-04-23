@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CatalogCell: UICollectionViewCell {
 
@@ -19,6 +20,7 @@ class CatalogCell: UICollectionViewCell {
     func setup(_ catalogItem: CatalogItem) {
         nameLabel.text = catalogItem.name
         priceLabel.text = catalogItem.price
-        imageView.image = catalogItem.icon
+        let url = URL(string: catalogItem.iconUrl)
+        imageView.sd_setImage(with: url)
     }
 }

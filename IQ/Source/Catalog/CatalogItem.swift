@@ -11,13 +11,13 @@ import UIKit
 class CatalogItem: NSObject {
     let name: String
     let price: String
-    let icon: UIImage
+    let iconUrl: String
     let urlString: String
 
-    init(name: String, price: String, icon: UIImage, urlString: String) {
+    init(name: String, price: String, iconUrl: String, urlString: String) {
         self.name = name
         self.price = price
-        self.icon = icon
+        self.iconUrl = iconUrl
         self.urlString = urlString
     }
 }

@@ -48,8 +48,8 @@ class PurchaseDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataS
     private func createFakeItems() -> [PurchaseAction] {
         return [
             PurchaseAction(name: "WITHDRAW TO CARD", icon: UIImage(named: "withdrawIcon")!),
-            PurchaseAction(name: "CONVERT", icon: UIImage(named: "convertIcon")!),
-            PurchaseAction(name: "SEND AS GIFT", icon: UIImage(named: "giftIcon")!)
+            PurchaseAction(name: "ADD TO BOOSTER", icon: UIImage(named: "convertIcon")!),
+            PurchaseAction(name: "SEND TO FRIEND", icon: UIImage(named: "giftIcon")!)
         ]
     }
 
@@ -75,5 +75,9 @@ class PurchaseDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataS
         }
 
         return cell!
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
