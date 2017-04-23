@@ -45,7 +45,7 @@ class PartnersLoader: NSObject {
                             let name = itemDict["name"] as? String ?? ""
                             let iconUrlTail = itemDict["logotypeUrl"] as? String ?? ""
                             let iconUrl = StringUtils.kBaseUrl + iconUrlTail
-                            let catalogItem = CatalogItem(name: name, price: "100", iconUrl: iconUrl, urlString: "")
+                            let catalogItem = CatalogItem(name: name, price: "100", iconUrl: iconUrl, urlString: "https://afisha.yandex.ru/saint-petersburg/cinema?preset=today")
                             result.append(catalogItem)
                         }
                         self.delegate?.didLoadPartners(result)

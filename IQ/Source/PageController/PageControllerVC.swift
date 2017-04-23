@@ -8,14 +8,16 @@
 
 import UIKit
 
-class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate {
+class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate, BoosterLoaderDelegate {
 
     @IBOutlet weak var contentScroll: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var buttonView: UIView!
     @IBOutlet private weak var buttonViewBottom: NSLayoutConstraint!
+    @IBOutlet private weak var boosterLabel: UILabel!
 
     private let boosterAnimator = TransitionAnimator()
+    private let boosterLoader = BoosterLoader()
 
     private var catalogVC: CatalogVC!
     private var mainVC: MainVC!
@@ -38,6 +40,13 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
 
         contentScroll.addSubview(mainVC.view)
         contentScroll.addSubview(catalogVC.view)
+
+        boosterLoader.delegate = self
+        reloadBoosterValue()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        boosterLabel.text = "Your Booster " + StringUtils.boosterValue()
     }
 
     @IBAction func openBoosterScreen() {
@@ -46,6 +55,15 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
 
         boosterVC.transitioningDelegate = self
         present(boosterVC, animated: true, completion: nil)
+    }
+
+    func reloadBoosterValue() {
+        boosterLoader.loadBoosterValue()
+//        boosterLabel.text = "Your Booster " + StringUtils.boosterValue()
+        let time = DispatchTime.now() + 3.0
+        DispatchQueue.main.asyncAfter(deadline: time) { 
+            self.reloadBoosterValue()
+        }
     }
 
     // MARK: - UIScrollViewDelegate
@@ -72,5 +90,12 @@ class PageControllerVC: UIViewController, UIScrollViewDelegate, UIViewController
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return boosterAnimator
+    }
+
+    // MARK: BoosterLoaderDelegate
+    func boosterValueLoaded(_ value: Int) {
+        DispatchQueue.main.async {
+            self.boosterLabel.text = "Your Booster $" + String(value)
+        }
     }
 }

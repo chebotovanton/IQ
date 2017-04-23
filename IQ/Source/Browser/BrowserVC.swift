@@ -12,7 +12,7 @@ import WebKit
 class BrowserVC: UIViewController, WKUIDelegate {
 
     private var webView: WKWebView!
-    var urlString: String?
+    var url: URL!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,8 @@ class BrowserVC: UIViewController, WKUIDelegate {
         webView.uiDelegate = self
         view.addSubview(webView)
 
-        if let urlString = urlString {
-            let url = URL(string: urlString)!
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
 
     override func viewWillAppear(_ animated: Bool) {

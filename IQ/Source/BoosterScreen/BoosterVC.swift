@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BoosterVC: UIViewController {
+class BoosterVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet private weak var overlayView: UIView!
@@ -16,6 +16,7 @@ class BoosterVC: UIViewController {
     @IBOutlet private weak var refillView: UIView!
     @IBOutlet private weak var refillViewTop: NSLayoutConstraint!
     @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var boosterLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class BoosterVC: UIViewController {
         overlayView.addGestureRecognizer(rec)
 
         boosterSwitch.onTintColor = Colors.progressColor()
+
+        boosterLabel.text = StringUtils.boosterValue()
 
         refillView.layer.cornerRadius = 12
         hideRefillView()
@@ -50,6 +53,16 @@ class BoosterVC: UIViewController {
         self.refillViewTop.constant = self.contentView.frame.height
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+        }
+    }
+
+    // MARK: - UITextFieldDelegate
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            StringUtils.setBoosterValue(text)
+            BoosterLoader().setBoosterValue(Int(text) ?? 0)
+            boosterLabel.text = StringUtils.boosterValue()
         }
     }
 

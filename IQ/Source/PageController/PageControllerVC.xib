@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageControllerVC" customModule="IQ" customModuleProvider="target">
             <connections>
+                <outlet property="boosterLabel" destination="Rbh-XA-Zxn" id="k21-IV-6w7"/>
                 <outlet property="buttonView" destination="nil-11-814" id="1Vf-zg-rnb"/>
                 <outlet property="buttonViewBottom" destination="9BU-1Y-tBU" id="6sx-fv-E9w"/>
                 <outlet property="contentScroll" destination="qQt-vE-5Y5" id="LqS-RY-12M"/>

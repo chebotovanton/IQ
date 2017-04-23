@@ -28,7 +28,6 @@ class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
         let headerNib = UINib(nibName: kHeaderIdentifier, bundle: nil)
         offersCollection.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderIdentifier)
-
     }
 
 //    private func createFakeItems() -> [CatalogItem] {
@@ -73,9 +72,12 @@ class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
-        let browser = BrowserVC()
-        browser.urlString = item.urlString
-        navigationController?.pushViewController(browser, animated: true)
+        let urlString = item.urlString
+        if let url = URL(string: urlString) {
+            let browser = BrowserVC()
+            browser.url = url
+            navigationController?.pushViewController(browser, animated: true)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -91,7 +93,9 @@ class CatalogVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     //MARK: - PartnersLoaderDelegate
     func didLoadPartners(_ partners: [CatalogItem]) {
         items = partners
-        offersCollection.reloadData()
+        DispatchQueue.main.async(execute: {
+            self.offersCollection.reloadData()
+        })
     }
 
     func didFailLoadingPartners() {

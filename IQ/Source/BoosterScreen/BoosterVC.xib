@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BoosterVC" customModule="IQ" customModuleProvider="target">
             <connections>
+                <outlet property="boosterLabel" destination="Fwi-Fq-yKC" id="ENH-U7-fJj"/>
                 <outlet property="boosterSwitch" destination="nf7-l8-BE3" id="lfP-Uv-zEU"/>
                 <outlet property="contentView" destination="Pvq-6S-2C3" id="ea9-GY-J0a"/>
                 <outlet property="overlayView" destination="l6S-r0-g3S" id="N8V-42-D64"/>
@@ -75,14 +76,14 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="I9O-r0-e9z">
                             <rect key="frame" x="20" y="35" width="20" height="20"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwi-Fq-yKC">
-                            <rect key="frame" x="20" y="435.5" width="115" height="38.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwi-Fq-yKC" userLabel="$0">
+                            <rect key="frame" x="20" y="435.5" width="42.5" height="38.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ $12 today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8G-ee-hbq">
-                            <rect key="frame" x="20" y="476" width="96.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 0.6% / month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8G-ee-hbq">
+                            <rect key="frame" x="20" y="476" width="122.5" height="21"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -106,6 +107,9 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="kmq-68-bTT"/>
+                                    </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GH-VT-2lW" userLabel="DividerView">
                                     <rect key="frame" x="20" y="143" width="335" height="1"/>

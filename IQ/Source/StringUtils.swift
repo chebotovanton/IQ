@@ -14,6 +14,17 @@ class StringUtils: NSObject {
 
     static let kBaseUrl = "http://ec2-34-200-221-62.compute-1.amazonaws.com"
 
+    static let kBoosterKey = "boosterKey"
+
+    static func boosterValue() -> String {
+        let string = UserDefaults.standard.string(forKey: kBoosterKey) ?? "0"
+        return "$" + string
+    }
+
+    static func setBoosterValue(_ boosterValue: String) {
+        UserDefaults.standard.set(boosterValue, forKey: kBoosterKey)
+    }
+
     static func priceText(_ price: Int, progress: CGFloat) -> String {
         if progress == 0 || progress == 1  {
             return "$" + String(price)

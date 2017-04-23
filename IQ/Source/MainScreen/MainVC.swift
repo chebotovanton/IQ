@@ -96,16 +96,16 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBAction func coinAction() {
         guard let doneCollection = doneCollection else { return }
         let coinDestY = (doneCollection.layoutAttributesForItem(at: IndexPath(item: 0, section: coinsDestSection()))?.frame.origin.y)! - doneCollection.contentOffset.y + 70.0
-        for _ in 0...5 {
-            let coin = UIView()
+        for _ in 0...10 {
+            let coin = UIImageView()
             let x = CGFloat(arc4random_uniform(300))
             coin.frame = CGRect(x: x, y: 600, width: 20, height: 20)
             coin.layer.cornerRadius = 10.0
             let colorKey = arc4random_uniform(10)
             if colorKey < 3 {
-                coin.backgroundColor = Colors.progressColor()
+                coin.image = UIImage(named: "yellowCoin")
             } else {
-                coin.backgroundColor = Colors.appBlueColor()
+                coin.image = UIImage(named: "blueCoin")
             }
             view.addSubview(coin)
             coins.append(coin)
@@ -292,7 +292,9 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             Section(progress, name: "In Progress", layoutStyle: .progress),
             Section(queue, name: "In Queue", layoutStyle: .queue)
         ]
-        doneCollection.reloadData()
+        DispatchQueue.main.async(execute: {
+            self.doneCollection.reloadData()
+        })
     }
 
     func didFailLoadingPurchases() {
