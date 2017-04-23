@@ -31,4 +31,9 @@ class StatsVC: UIViewController {
     @IBAction func close() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
+
+    @IBAction func howItWorks() {
+        let howItWorksVC = HowItWorks(nibName: "HowItWorks", bundle: nil)
+        present(howItWorksVC, animated: true, completion: nil)
+    }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HowItWorks" customModule="IQ" customModuleProvider="target">
+            <connections>
+                <outlet property="scrollView" destination="dK9-8d-g6f" id="Uze-1u-YIO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dK9-8d-g6f">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3d-MP-jdZ">
+                    <rect key="frame" x="248" y="20" width="107" height="39"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <state key="normal" title="OK. Got it."/>
+                    <connections>
+                        <action selector="close" destination="-1" eventType="touchUpInside" id="pZF-Kq-2X9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dK9-8d-g6f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GRJ-uw-m5h"/>
+                <constraint firstAttribute="bottom" secondItem="dK9-8d-g6f" secondAttribute="bottom" id="QrD-id-anX"/>
+                <constraint firstAttribute="trailing" secondItem="v3d-MP-jdZ" secondAttribute="trailing" constant="20" id="X6J-JB-AUL"/>
+                <constraint firstAttribute="trailing" secondItem="dK9-8d-g6f" secondAttribute="trailing" id="qGl-S1-eb7"/>
+                <constraint firstItem="dK9-8d-g6f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sxx-cC-I2x"/>
+                <constraint firstItem="v3d-MP-jdZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="vWV-88-Zil"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

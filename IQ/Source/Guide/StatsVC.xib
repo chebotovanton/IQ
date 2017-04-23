@@ -111,6 +111,9 @@
                     <state key="normal" title="HOW IT WORKS">
                         <color key="titleColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="howItWorks" destination="-1" eventType="touchUpInside" id="Rs6-Hh-8Na"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
